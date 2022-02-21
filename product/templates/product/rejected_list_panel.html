@@ -1,0 +1,95 @@
+{% extends "panel/base.html" %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container-full">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title">گزارشات بارگیری شده</h3>
+                        <div class="d-inline-block align-items-center">
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html"><i
+                                            class="mdi mdi-home-outline"></i></a>
+                                    </li>
+                
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="row">
+
+
+                    <div class="col-12 col-lg-12">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">گزارشات بارگیری شده</h4>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                        <form method="get" style="text-align: left;">
+                                    {{ filter.form.as_p }}
+                                    <input type="submit"/>
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+            
+                                </form>
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">ردیف</th>
+                                            <th scope="col">شماره قله در سیستم</th>
+                                            <th scope="col">تاریخ حمل</th>
+                                            <th scope="col">شماره بارنامه</th>
+                                            <th scope="col">وزن باسکول</th>
+                                            <th scope="col">خریدار</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for product in filter.qs %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ product.serial_number_of_the_peak_in_the_mine }}</td>
+                                                <td>{{ product.transport_date }}</td>
+                                                <td>{{ product.freight_number }}</td>
+                                                <td>{{ product.weight_of_scales }}</td>
+                                                <td>{{ product.buyer }}</td>
+                                            </tr>
+                                        {% empty %}
+                                            <h1 class="text-center">هنوز هیچ محصولی در سیستم ثبت نشده است</h1>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                    <input type="submit" class="btn-success" value="دانلود فایل اکسل">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+                </div>
+        </div>
+        <!-- /.row -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+
+    </div>
+    <!-- ./wrapper -->
+{% endblock %}

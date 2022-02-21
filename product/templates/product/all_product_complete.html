@@ -1,0 +1,371 @@
+{% extends "site/base.html" %}
+{% load static %}
+{% block search %}
+    <!-- extra nav -->
+    <div class="extra-nav" style="height: 65px;">
+        <div class="extra-cell ">
+            <button id="quik-search-btn" type="button" class="site-button bg-white"
+                    style="color: #1A74B5;font-size: large;padding-top: 5px"><i
+                    class="fa fa-search font-weight-300"></i><a class="font-weight-300"> جستجو </a>
+            </button>
+        </div>
+    </div>
+    <!-- main nav -->
+    <div class="header-nav navbar-collapse collapse justify-content-right" id="navbarNavDropdown">
+        <ul class=" nav navbar-nav" style="padding-right: 25px;">
+
+            <li style="padding-right: 17px">
+                <div>
+                    <a href="{% url "config:site_home" %}">خانه</a>
+                </div>
+            </li>
+            <li style="padding-right: 17px" class="active">
+                <div>
+                    <a href="{% url "product:all_product" %}">کل
+                        موجودی</a>
+                </div>
+            </li>
+            <li style="padding-right: 17px">
+                <div>
+                    <a href="{% url "product:exportal_list" %}">صادراتی</a>
+                </div>
+            </li>
+            <li style="padding-right: 17px">
+                <div>
+                    <a href="{% url "product:special_offer" %}">پیشنهاد
+                        ویژه</a>
+                </div>
+            </li>
+            <li style="padding-right: 17px">
+                <div>
+                    <a href="{% url "mine:list" %}">معادن</a>
+                </div>
+            </li>
+            <li style="padding-right: 17px">
+                <div>
+                    <a href="block-details.html">بلاگ</a>
+                </div>
+            </li>
+            <li style="padding-right: 17px">
+                <div>
+                    <a href="{% url "account:favorite_product" %}">انتخاب های
+                        من</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- main header END -->
+    </header>
+    <!-- header END -->
+    <!-- Content -->
+    <div class="page-content font-style-2">
+
+    <!-- Quik search -->
+    <div class="dez-quik-search "
+         style="width: 100%; left: 0px; right: 0px;z-index: 10;font-size: 12px">
+        <form action="{% url 'product:search' %}" style="margin: auto;margin-top: 20px">
+            <div class="row ">
+                <div class="col-4 form-group text-left">
+                    <input {% if request.GET.stone_type %}value="{{request.GET.stone_type}}"{% endif %} name="stone_type" class="form-control " placeholder="نوع سنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-4 form-group text-left">
+                    <input {% if request.GET.stone_name %}value="{{request.GET.stone_name}}"{% endif %} name="stone_name" class="form-control " placeholder="نام سنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input {% if request.GET.color_code %}value="{{request.GET.color_code}}"{% endif %} name="color_code" class="form-control " placeholder="رنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <button type="submit" class="site-button dz-xs-flex m-r5"
+                            style="background-color: #1A74B5; width: 100%">
+                        جستجو
+                    </button>
+                </div>
+            </div>
+            <div class="row " style="margin-top: -10px">
+                <div class="col-3 form-group text-left">
+                    <input {% if request.GET.length_min %}value="{{request.GET.length_min}}"{% endif %} name="length_min" class="form-control " placeholder="حداقل طول"
+                           type="text"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-3 form-group text-left">
+                    <input {% if request.GET.length_max %}value="{{request.GET.length_max}}"{% endif %} name="length_max" class="form-control " placeholder="حداکثر طول"
+                           type="number"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input {% if request.GET.height_min %}value="{{request.GET.height_min}}"{% endif %} name="height_min" class="form-control " placeholder="حداقل ارتفاع"
+                           type="number"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input {% if request.GET.height_max %}value="{{request.GET.height_max}}"{% endif %} name="height_max" class="form-control " placeholder="حداکثر ارتفاع"
+                           type="number"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <a href="{% url 'product:all_product' %}" class="site-button dz-xs-flex m-r5" style="background-color: #df0000;  width: 100%">Reset</a>
+                </div>
+            </div>
+            <div class="row " style="margin-top: -10px">
+                <div class="col-3 form-group text-left">
+                    <input {% if request.GET.mine %}value="{{request.GET.mine}}"{% endif %} name="mine" class="form-control " placeholder="محل دپو"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-4 form-group text-left">
+                    <input {% if request.GET.ton %}value="{{request.GET.ton}}"{% endif %} name="ton" class="form-control " placeholder="تناژ مورد نیاز"
+                           type="number"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-3 form-group text-left">
+                    <input {% if request.GET.grading_code %}value="{{request.GET.grading_code}}"{% endif %} name="grading_code" class="form-control " placeholder="درجه بندی"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+            </div>
+            <!--                <input name="search" value="" type="text" class="form-control" placeholder="جستجو">-->
+            <!--                            <span id="quik-search-remove"><i class="fa fa-remove"></i></span>-->
+        </form>
+        <div class="dez-quik-search-opacity w-100 h-100 bg-green" style="position: absolute;top: 0;z-index: -1">dafsdf
+        </div>
+
+    </div>
+{% endblock %}
+{% block content %}
+    <!-- special offer -->
+    <div class="section-full content-inner overlay-white-dark"
+         style="background-image:url({% static "site/images/bgprofile3.jpg" %}); background-attachment: fixed">
+
+        <div class="container-fluid p-l90 p-r90" style="margin-top: 140px">
+            <div class="section-head text-left" style="margin-right: 30px">
+                <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">کل موجودی</P>
+                <p class="text-uppercase text-gray" style="margin-top:-15px; margin-bottom:-15px">تعداد
+                    : {{ total_count }} تناژ :
+                    {{ total_ton }} </P>
+                <div class="clear"></div>
+            </div>
+
+            <div class="row m-b50">
+                {% for l in internal %}
+                    <div class="col-md-6 col-lg-3 col-sm-6 m-b100">
+                        <div class="dez-box fly-box" style="margin: -10px;">
+                            {% for im in l.image_internal_logo.all %}
+                                {% if forloop.counter < 2 %}
+                                    <div class="dez-media"><a
+                                            href="{% url 'product:internal_product_detail' l.unique_id %}"><img
+                                            src="{{ im.photo.url }}" alt=""></a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="dez-info p-10 row text-center m-auto"
+                                 style="background-color: #1D1D1F">
+                                <div class="col-lg-6 text-left" style="margin-top: auto"><a href="javascript:void(0);"
+                                                                                            style="font-size: large"
+                                                                                            class="fa fa-share-alt text-white "></a>
+                                </div>
+                                <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white"
+                                                                                              style="font-size: small">درجه
+                                    بندی :</a><a class="font-weight-600 text-white"
+                                                 href="{% url "config:info" %}">{{ l.grading_code }}</a>
+                                </div>
+                            </div>
+                            <div class="dez-info bg-white text-center m-auto row ">
+                                <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"
+                                                                            style="color: #333;font-size: large">
+                                    {{ l.stone_name }} </a></div>
+                            </div>
+                            <div class="dez-info p-a15 bg-white row m-auto ">
+
+                                <div class="col-6 ">
+                                    <ul class="product-box-ul font-weight-300 p-r30" style="list-style-type:none">
+                                        <li>نوع سنگ</li>
+                                        <li>ابعاد</li>
+                                        <li>معدن</li>
+                                        <li>وزن تقریبی</li>
+                                        <li>موجودی</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 ">
+                                    <ul class="product-box-ul font-weight-300 p-r30" style="list-style-type:none;">
+                                        <li>{{ l.mine.stone_type }}</li>
+                                        <li>{{ l.length }}*{{ l.width }}*{{ l.height }}</li>
+                                        <li>{{ l.mine }}</li>
+                                        <li>{{ l.approximate_tonnage }}</li>
+                                        <li>{{ l.supply }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dez-info p-a0 bg-white row m-auto ">
+
+                                <div class="col-6"><a style="font-size: 7px"
+                                                      href="{% url 'account:create_favorite' l.unique_id %}"
+                                                      class="site-button add-to-wish-list-btn text-white"
+                                ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>
+                                    به لیست علاقه مندی های من اضافه شود
+                                </a></div>
+                                <div class="col-6"><a class="site-button block-num-block-box bg-white text-secondry"
+                                                      style="font-size: 10px !important;"  href="{% url 'product:internal_product_detail' l.unique_id %}"
+                                >بلوک
+                                    : {{ l.unique_id }}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for ex in exportal %}
+                    <div class="col-md-6 col-lg-3 col-sm-6 m-b100">
+                        <div class="dez-box fly-box" style="margin: -10px;">
+                            {% for ia in ex.image_exportal_logo.all %}
+                                {% if forloop.counter < 2 %}
+                                    <div class="dez-media"><a
+                                            href="{% url 'product:exportal_product_detail' ex.unique_id %}"><img
+                                            src="{{ ia.photo.url }}" alt=""></a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="dez-info p-10 row text-center m-auto"
+                                 style="background-color: #1D1D1F">
+                                <div class="col-lg-6 text-left" style="margin-top: auto"><a href="javascript:void(0);"
+                                                                                            style="font-size: large"
+                                                                                            class="fa fa-share-alt text-white "></a>
+                                </div>
+                                <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white"
+                                                                                              style="font-size: small">درجه
+                                    بندی :</a><a class="font-weight-600 text-white"
+                                                 href="{% url "config:info" %}"> {{ ex.grading_code }}</a>
+                                </div>
+                            </div>
+                            <div class="dez-info bg-white text-center m-auto row ">
+                                <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"
+                                                                            style="color: #333;font-size: large">سیلور
+                                    سلماس </a></div>
+                            </div>
+                            <div class="dez-info p-a15 bg-white row m-auto ">
+
+                                <div class="col-6 ">
+                                    <ul class="product-box-ul font-weight-300 p-r30" style="list-style-type:none">
+                                        <li>نوع سنگ</li>
+                                        <li>ابعاد</li>
+                                        <li>معدن</li>
+                                        <li>وزن تقریبی</li>
+                                        <li>موجودی</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 ">
+                                    <ul class="product-box-ul font-weight-300 p-r30" style="list-style-type:none;">
+                                        <li>{{ ex.mine.stone_type }}</li>
+                                        <li>{{ ex.width }}*{{ ex.length }}*{{ ex.height }}</li>
+                                        <li>{{ ex.mine }}</li>
+                                        <li>{{ ex.approximate_tonnage }}</li>
+                                        <li>{{ ex.supply }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dez-info p-a0 bg-white row m-auto ">
+
+                                <div class="col-6"><a style="font-size: 7px"
+                                                      href="{% url 'account:create_favorite' ex.unique_id %}"
+                                                      class="site-button add-to-wish-list-btn text-white"
+                                ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>
+                                    به لیست علاقه مندی های من اضافه شود
+                                </a></div>
+                                <div class="col-6"><a class="site-button block-num-block-box bg-white text-secondry"
+                                                      style="font-size: 10px !important;" href="{% url 'product:exportal_product_detail' ex.unique_id %}"
+                                >بلوک
+                                    : {{ ex.unique_id }}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for line in lined %}
+                    {% if forloop.counter < 2 %}
+                        {% for n in line.info.all %}
+                            <div class="col-md-6 col-lg-3 col-sm-6 m-b1o0">
+                                <div class="dez-box fly-box" style="margin: -10px;">
+                                    {% for p in product.image.all %}
+                                        {% if forloop.counter < 2 %}
+                                            <div class="dez-media"><a
+                                                    href=""><img
+                                                    src="{{ p.photo.url }}" alt=""></a>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="dez-info p-10 row text-center m-auto"
+                                         style="background-color: #1D1D1F">
+                                        <div class="col-lg-6 text-left" style="margin-top: auto"><a
+                                                href="javascript:void(0);"
+                                                style="font-size: large"
+                                                class="fa fa-share-alt text-white "></a>
+                                        </div>
+                                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white"
+                                                                                                      style="font-size: small">درجه
+                                            بندی :</a><a class="font-weight-600 text-white"
+                                                         href="javascript:void(0);"> {{ n.grading_code }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="dez-info bg-white text-center m-auto row ">
+                                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"
+                                                                                    style="color: #333;font-size: large">{{ n.stone_name }}
+                                        </a></div>
+                                    </div>
+                                    <div class="dez-info p-a15 bg-white row m-auto ">
+
+                                        <div class="col-6 ">
+                                            <ul class="product-box-ul font-weight-300 p-r30"
+                                                style="list-style-type:none">
+                                                <li>نوع سنگ</li>
+                                                <li>ابعاد</li>
+                                                <li>معدن</li>
+                                                <li>وزن تقریبی</li>
+                                                <li>موجودی</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-6 ">
+                                            <ul class="product-box-ul font-weight-300 p-r30" style="list-style-type:none;">
+                                                <li>{{ n.mine.stone_type }}</li>
+                                                <li>{{ n.width }}*{{ n.length }}*{{ n.height }}</li>
+                                                <li>{{ n.mine }}</li>
+                                                <li>{{ n.approximate_tonnage }}</li>
+                                                <li>{{ n.supply }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="dez-info p-a0 bg-white row m-auto ">
+
+                                        <div class="col-6"><a style="font-size: 7px"
+                                                              href="{% url "account:create_favorite" n.unique_id %}"
+                                                              class="site-button add-to-wish-list-btn text-white"
+                                        ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>
+                                            به لیست علاقه مندی های من اضافه شود
+                                        </a></div>
+                                        <div class="col-6"><a
+                                                class="site-button block-num-block-box bg-white text-secondry"
+                                                style="font-size: 10px !important;"
+                                        >بلوک
+                                            : {{ n.unique_id }}</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            
+
+        </div>
+    </div>
+    <!-- special offer END-->
+
+
+    </div>
+    <!-- Content END-->
+{% endblock %}

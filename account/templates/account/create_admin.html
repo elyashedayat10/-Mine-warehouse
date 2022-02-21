@@ -1,0 +1,76 @@
+{% extends "panel/base.html" %}
+{% block content %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div class="container-full">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title">افزودن Admin-User</h3>
+                        <div class="d-inline-block align-items-center">
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html"><i
+                                            class="mdi mdi-home-outline"></i></a></li>
+
+                                    <li class="breadcrumb-item active" aria-current="page">افزودن Admin-User</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="box">
+
+                            <div class="box-header">
+                                <h4 class="box-title">افزودن Admin-User</h4>
+                            </div>
+                            <div class="box-body">
+
+
+                                <form action="" method="post">
+{% csrf_token %}
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-2">{{ form.email.label }}</label>
+                                        <div class="col-md-10">
+                                            {{ form.email }}
+                                        </div>
+                                        <label class="col-form-label col-md-2">{{ form.first_name.label }}</label>
+                                        <div class="col-md-10">
+                                            {{ form.first_name }}
+                                        </div>
+                                             <label class="col-form-label col-md-2">{{ form.last_name.label }}</label>
+                                        <div class="col-md-10">
+                                            {{ form.last_name }}
+                                        </div>
+                                        <label class="col-form-label col-md-2">{{ form.password.label }}</label>
+                                        <div class="col-md-10">
+                                            {{ form.password }}
+                                            <input class="form-control btn-success" type="submit">
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            </div>
+
+
+                            <!-- /.box -->
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+{% endblock %}

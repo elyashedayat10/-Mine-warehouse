@@ -1,0 +1,1339 @@
+{#{% extends "site/base.html" %}#}
+{#{% load static %}#}
+{#{% load thumbnail %}#}
+{#{% load social_share %}#}
+{#{% block search %}#}
+{#<!-- extra nav -->#}
+{#<style>#}
+{#    #foo {#}
+{#        height: 25px;#}
+{#        width: 40px;#}
+{#        color: white;#}
+{#        overflow: hidden;#}
+{#        -webkit-transition: all .25s ease-out;#}
+{#        -moz-transition: all .25s ease-out;#}
+{#        -o-transition: all .25s ease-out;#}
+{#        transition: all .25s ease-out;#}
+{#    }#}
+{##}
+{#    #foo:hover {#}
+{#        width: 100%;#}
+{#        -webkit-transition: all .25s ease-out;#}
+{#        -moz-transition: all .25s ease-out;#}
+{#        -o-transition: all .25s ease-out;#}
+{#        transition: all .25s ease-out;#}
+{#    }#}
+{##}
+{#    #foo i.fa {#}
+{#        position: relative;#}
+{#        height: 25px;#}
+{#        width: 30px;#}
+{#        margin: 0px;#}
+{#        font-size: 20px;#}
+{#        padding: 5px 0;#}
+{#        text-align: center;#}
+{#        box-sizing: border-box;#}
+{#        opacity: 1;#}
+{#        float: left;#}
+{#    }#}
+{##}
+{#    #foo i.fa-share-square-o {#}
+{#        opacity: 1;#}
+{#        width: 45px;#}
+{#        -webkit-transition: all .25s ease-out;#}
+{#        -moz-transition: all .25s ease-out;#}
+{#        -o-transition: all .25s ease-out;#}
+{#        transition: all .25s ease-out;#}
+{#    }#}
+{##}
+{#    #foo:hover .fa {#}
+{#        opacity: 1;#}
+{#        -webkit-transition: all .25s ease-out;#}
+{#        -moz-transition: all .25s ease-out;#}
+{#        -o-transition: all .25s ease-out;#}
+{#        transition: all .25s ease-out;#}
+{#    }#}
+{##}
+{#    #foo:hover a .fa {#}
+{#        color: white;#}
+{#    }#}
+{##}
+{#    #foo:hover a:hover .fa {#}
+{#        color: #EE7554;#}
+{#    }#}
+{##}
+{#    #foo:hover .fa-share-square-o {#}
+{#        opacity: 0;#}
+{#        width: 0px;#}
+{#        -webkit-transition: all .25s ease-out;#}
+{#        -moz-transition: all .25s ease-out;#}
+{#        -o-transition: all .25s ease-out;#}
+{#        transition: all .25s ease-out;#}
+{#    }#}
+{#</style>#}
+{#<div class="extra-nav" style="height: 65px;">#}
+{#    <div class="extra-cell ">#}
+{#        <button id="quik-search-btn" type="button" class="site-button bg-white"#}
+{#                style="color: #1A74B5;font-size: large;padding-top: 5px"><i#}
+{#                class="fa fa-search font-weight-300"></i><a class="font-weight-300"> جستجو </a>#}
+{#        </button>#}
+{#    </div>#}
+{#</div>#}
+{#<!-- Quik search -->#}
+{#<div class="dez-quik-search "  style="top: 65px">#}
+{#    <form action="{%   url "product:search"  %}" style="margin: auto;margin-top: 20px">#}
+{#        <div class="row ">#}
+{#            <div class="col-4 form-group text-left">#}
+{#                <input name="stone_type"  class="form-control " placeholder="نوع سنگ"#}
+{#                       type="text"#}
+{#                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-4 form-group text-left">#}
+{#                <input name="stone_name"  class="form-control " placeholder="نام سنگ"#}
+{#                       type="text"#}
+{#                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-2 form-group text-left">#}
+{#                <input name="color_code"  class="form-control " placeholder="رنگ"#}
+{#                       type="text"#}
+{#                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-2 form-group text-left">#}
+{#                <span id="quik-search-remove"><i class="fa fa-remove"></i></span>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#        <div class="row " style="margin-top: -10px">#}
+{#            <div class="col-3 form-group text-left">#}
+{#                <input name="dzName"  class="form-control " placeholder="حداقل طول"#}
+{#                       type="text"#}
+{#                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-3 form-group text-left">#}
+{#                <input name="length" class="form-control " placeholder="حداکثر طول"#}
+{#                       type="number"#}
+{#                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-2 form-group text-left">#}
+{#                <input name="height"  class="form-control " placeholder="حداقل ارتفاع"#}
+{#                       type="number"#}
+{#                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-2 form-group text-left">#}
+{#                <input name="width"  class="form-control " placeholder="حداکثر ارتفاع"#}
+{#                       type="number"#}
+{#                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-2 form-group text-left">#}
+{#                <button class="site-button dz-xs-flex m-r5"#}
+{#                        style="background-color: #1A74B5; width: 100%">#}
+{#                    جستجو#}
+{#                </button>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#        <div class="row " style="margin-top: -10px">#}
+{#            <div class="col-3 form-group text-left">#}
+{#                <input name="mine"  class="form-control " placeholder="محل دپو"#}
+{#                       type="text"#}
+{#                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-4 form-group text-left">#}
+{#                <input name="dzName"  class="form-control " placeholder="تناژ مورد نیاز"#}
+{#                       type="text"#}
+{#                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-3 form-group text-left">#}
+{#                <input name="grading_code"  class="form-control " placeholder="درجه بندی"#}
+{#                       type="text"#}
+{#                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>#}
+{#            </div>#}
+{#            <div class="col-2 form-group text-left">#}
+{#                <button class="site-button dz-xs-flex m-r5"#}
+{#                        style="background-color: #df0000;  width: 100%">#}
+{#                    Reset#}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!--                <input name="search" value="" type="text" class="form-control" placeholder="جستجو">-->#}
+{#        <!--                            <span id="quik-search-remove"><i class="fa fa-remove"></i></span>-->#}
+{#    </form>#}
+{#    <div class="dez-quik-search-opacity w-100 h-100 bg-green"#}
+{#         style="position: absolute;top: 0;z-index: -1">dafsdf#}
+{#    </div>#}
+{#</div>#}
+{#{% endblock %}#}
+{#<!-- main nav -->#}
+{#{% block content %}#}
+{#<!-- header END -->#}
+{#<!-- Content -->#}
+{#<div class="page-content font-style-2">#}
+{#    <!-- Slider -->#}
+{#    <div class="main-slider style-two default-banner rev-slider-rtl" id="home">#}
+{#        <div class="tp-banner-container">#}
+{#            <div class="tp-banner " style="height: 680px; background-color: #1D1D1F">#}
+{#                <div id="rev_slider_1175_1_wrapper" class="rev_slider_wrapper fullscreen-container"#}
+{#                     data-alias="duotone192" data-source="gallery" {}#}
+{#                     style="background-color:transparent;padding:0px;">#}
+{##}
+{#                </div>#}
+{#                <div class="container">#}
+{#                    <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">#}
+{#                        <div class="carousel-inner p-a25 m-auto">#}
+{#                            {% for obj in sliders %}#}
+{#                            <div class="carousel-item  act-{{ forloop.counter }}" style="text-align: center">#}
+{#                                {% for sliderimage in obj.image_exportal_logo.all %}#}
+{#                                {% if forloop.counter < 2 %}#}
+{##}
+{#                                                               <img src="{{ sliderimage.photo.url }}" alt="Los Angeles"#}
+{#                                     style="max-width: 75%;height: 550px;">#}
+{##}
+{##}
+{##}
+{##}
+{#                                {% endif %}#}
+{#                                {% endfor %}#}
+{#                                <div class="carousel-caption "#}
+{#                                     style="width: 358px; height: 358px;position: absolute;top: 17%; left: 4%">#}
+{#                                    <div class="h-25"></div>#}
+{#                                    <p class="text-uppercase font-weight-300 text-black"#}
+{#                                       style="font-size: x-large; font-weight: bold">#}
+{#                                        {{ obj.mine.stone_type }}</p>#}
+{#                                    <p class="text-uppercase font-weight-500 "#}
+{#                                       style="font-size: xx-large;color: #0089df">{{obj.stone_name}}</p>#}
+{#                                    <a href="{% url "product:exportal_product_detail" obj.pk %}"#}
+{#                                    class="site-button m-t40 m-l10 radius-no font-weight-300"#}
+{#                                    style="font-family: 'Vazir';background-color: #0089df;font-size: x-small;padding:#}
+{#                                    10px#}
+{#                                    40px 10px 40px;">#}
+{#                                    مشاهده#}
+{#                                    جزئیات </a>#}
+{#                                    <div class="w-100 h-100 "#}
+{#                                         style="position: absolute; top: 0%;z-index: -1;background-color: #e7e7e7; opacity: 68%;"></div>#}
+{#                                    <!--                                    <img style="position: absolute;top: 0;left: 0" src="images/lable1.png">-->#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <a class="carousel-control-prev" href="#demo" data-slide="prev" style="top: 20% !important">#}
+{#                    <span><i class="fa fa-5x fa-angle-right"></i></span>#}
+{#                </a>#}
+{#                <a class="carousel-control-next" href="#demo" data-slide="next" style="top: 20% !important">#}
+{#                    <span><i class="fa fa-5x fa-angle-left"></i></span>#}
+{#                </a>#}
+{#            </div>#}
+{#            <!--                    </div>-->#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#<!-- Slider END -->#}
+{##}
+{#<!-- Content area -->#}
+{#<div class="section-full content-inner overlay-white-dark"#}
+{#     style="background-image:url({% static 'images/bgprofile3.jpg' %});margin-top: -50px; background-attachment:fixed">#}
+{#    <!-- special offer -->#}
+{#    <div class="container-fluid p-l90 p-r90">#}
+{#        <div class="section-head text-left" style="margin-right: 30px">#}
+{#            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">پیشنهاد ویژه</p>#}
+{#            <div class="clear"></div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            {% for pro in special_offer %}#}
+{#            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">#}
+{#                <div class="dez-box fly-box" style="margin: -10px;">#}
+{#                    {% for m in pro.image_exportal_logo.all %}#}
+{#                    {% if forloop.counter < 2 %}#}
+{##}
+{##}
+{##}
+{#                      {% thumbnail m.photo "600x600" as test %}#}
+{#                    <div class="dez-media"><a#}
+{#                            href="{% url "product:exportal_product_detail" pro.pk %}"><img src="{{ test.url }}" class="card-img-top"></a>#}
+{#                    </div>#}
+{#                {% endthumbnail %}#}
+{#                    {% endif %}#}
+{#                    {% endfor %}#}
+{#                    <div class="dez-info p-10 row text-center m-auto"#}
+{#                         style="background-color: #1D1D1F">#}
+{#                        <div id="box" class="col-lg-6 text-left" style="margin-top: auto">#}
+{#                                    </a>#}
+{#                                    <div id="foo">#}
+{#                                        <i class="fa fa-share-alt text-white" style="font-size: large"></i>#}
+{#                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-telegram"></i></a>#}
+{#                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-whatsapp"></i></a>#}
+{#                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-linkedin"></i></a>#}
+{#                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-envelope"></i></a>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه#}
+{#                            بندی :</a><a class="font-weight-600 text-white"#}
+{#                                         href="{% url "blog:blog_list" %}"> {{ pro.grading_code }}</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info bg-white text-center m-auto row ">#}
+{#                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"#}
+{#                                                                    style="color: #333;font-size: large">{{pro.stone_name }}#}
+{#                        </a></div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="dez-info p-a15 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">#}
+{#                                <li>نوع سنگ</li>#}
+{#                                <li>ابعاد</li>#}
+{#                                <li>معدن</li>#}
+{#                                <li>وزن تقریبی</li>#}
+{##}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">#}
+{#                                <li>{{ pro.mine.stone_type }}</li>#}
+{#                                <li>{{ pro.width }}*{{ pro.length }}*{{ pro.height }}</li>#}
+{#                                <li>{{ pro.mine.province }}</li>#}
+{#                                <li>{{ pro.approximate_tonnage }}</li>#}
+{##}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-a0 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6"><a style="font-size: 9px"#}
+{#                                              href="{% url "account:create_favorite" pro.unique_id %}"#}
+{#                            class="site-button add-to-wish-list-btn text-white"#}
+{#                            ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>#}
+{#                            به لیست علاقه مندی های من اضافه شود#}
+{#                            </a></div>#}
+{#                        <div class="col-6"><a href="{% url "product:exportal_product_detail" pro.pk %}"#}
+{#                            class="site-button block-num-block-box bg-white text-secondry"#}
+{#                            style="font-size: 14px !important;"#}
+{#                            >بلوک#}
+{#                            : {{ pro.unique_id }}</a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% empty %}#}
+{#            <h1 class="text-center">هیچ پیشنهاد ویؤه ای موجود نیست موجود نیست</h1>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-12 m-b30 m-t50 text-center">#}
+{#                <a href="{% url "product:special_offer" %}"#}
+{#                class="site-button m-t10 m-l10 radius-no more-btn-default">#}
+{#                بیشتر </a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <div class="container-fluid p-l90 p-r90">#}
+{#        <div class="section-head text-left" style="margin-right: 30px">#}
+{#            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">صادراتی</p>#}
+{#            <div class="clear"></div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#           {% for items in exportal %}#}
+{#            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">#}
+{#                <div class="dez-box fly-box" style="margin: -10px;">#}
+{#                    {% for m in items.image_exportal_logo.all %}#}
+{#                    {% if forloop.counter < 2 %}#}
+{##}
+{##}
+{##}
+{#                      {% thumbnail m.photo "600x600" as test %}#}
+{#                    <div class="dez-media"><a#}
+{#                            href="{% url "product:exportal_product_detail" items.pk %}"><img src="{{ test.url }}" class="card-img-top"></a>#}
+{#                    </div>#}
+{#                {% endthumbnail %}#}
+{#                    {% endif %}#}
+{#                    {% endfor %}#}
+{#                    <div class="dez-info p-10 row text-center m-auto"#}
+{#                         style="background-color: #1D1D1F">#}
+{#                        <div id="box" class="col-lg-6 text-left" style="margin-top: auto">#}
+{#                                    </a>#}
+{#                                    <div id="foo">#}
+{#                                        <i class="fa fa-share-alt text-white" style="font-size: large"></i>#}
+{#                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-telegram"></i></a>#}
+{#                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-whatsapp"></i></a>#}
+{#                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-linkedin"></i></a>#}
+{#                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-envelope"></i></a>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه#}
+{#                            بندی :</a><a class="font-weight-600 text-white"#}
+{#                                         href="{% url "blog:blog_list" %}"> {{ items.grading_code }}</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info bg-white text-center m-auto row ">#}
+{#                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"#}
+{#                                                                    style="color: #333;font-size: large">{{pro.stone_name }}#}
+{#                        </a></div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="dez-info p-a15 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">#}
+{#                                <li>نوع سنگ</li>#}
+{#                                <li>ابعاد</li>#}
+{#                                <li>معدن</li>#}
+{#                                <li>وزن تقریبی</li>#}
+{##}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">#}
+{#                                <li>{{ items.mine.stone_type }}</li>#}
+{#                                <li>{{ items.width }}*{{ items.length }}*{{ items.height }}</li>#}
+{#                                <li>{{ items.mine.province }}</li>#}
+{#                                <li>{{ items.approximate_tonnage }}</li>#}
+{##}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-a0 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6"><a style="font-size: 9px"#}
+{#                                              href="{% url "account:create_favorite" items.unique_id %}"#}
+{#                            class="site-button add-to-wish-list-btn text-white"#}
+{#                            ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>#}
+{#                            به لیست علاقه مندی های من اضافه شود#}
+{#                            </a></div>#}
+{#                        <div class="col-6"><a href="{% url "product:exportal_product_detail" items.pk %}"#}
+{#                            class="site-button block-num-block-box bg-white text-secondry"#}
+{#                            style="font-size: 14px !important;"#}
+{#                            >بلوک#}
+{#                            : {{ items.unique_id }}</a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% empty %}#}
+{#            <h1 class="text-center">هیچ پیشنهاد ویؤه ای موجود نیست موجود نیست</h1>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-12 m-b30 m-t50 text-center">#}
+{#                <a href="{% url "product:exportal_list" %}"#}
+{#                class="site-button m-t10 m-l10 radius-no more-btn-default">#}
+{#                بیشتر </a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{##}
+{##}
+{#    <!-- export END-->#}
+{#    <!-- lined in the mine -->#}
+{#    <div class="container-fluid p-l90 p-r90">#}
+{#        <div class="section-head text-left" style="margin-right: 30px">#}
+{#            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">لاین شده در معدن</p>#}
+{##}
+{#            <div class="clear"></div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            {% for l in lined %}#}
+{#            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">#}
+{#                <div class="dez-box fly-box" style="margin: -10px;">#}
+{#                    <div class="dez-media"><a href="lined-single.html"><img src="images/stone11.jpg" alt=""></a>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-10 row text-center m-auto"#}
+{#                         style="background-color: #1D1D1F">#}
+{#                        <div class="col-lg-6 text-left" style="margin-top: auto"><a#}
+{#                                href="javascript:void(0);"#}
+{#                                style="font-size: large"#}
+{#                                class="fa fa-share-alt text-white "></a>#}
+{#                        </div>#}
+{#                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه#}
+{#                            بندی :</a><a class="font-weight-600 text-white"#}
+{#                                         href="javascript:void(0);"> A</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info bg-white text-center m-auto row ">#}
+{#                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"#}
+{#                                                                    style="color: #333;font-size: large">سیلور#}
+{#                            سلماس </a></div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="dez-info p-a15 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">#}
+{#                                <li>نوع سنگ</li>#}
+{#                                <li>ابعاد</li>#}
+{#                                <li>معدن</li>#}
+{#                                <li>وزن تقریبی</li>#}
+{#                                <li>موجود</li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">#}
+{#                                <li>تراورتن</li>#}
+{#                                <li>120*150*160</li>#}
+{#                                <li>کرج-ایران</li>#}
+{#                                <li>10 تن</li>#}
+{#                                <li>120 تن</li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-a0 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6"><a style="font-size: 9px" href=""#}
+{#                                              class="site-button add-to-wish-list-btn text-white"#}
+{#                        ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>#}
+{#                            به لیست علاقه مندی های من اضافه شود#}
+{#                        </a></div>#}
+{#                        <div class="col-6"><a class="site-button block-num-block-box bg-white text-secondry"#}
+{#                                              style="font-size: 14px !important;"#}
+{#                        >بلوک#}
+{#                            : #123456789aas</a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% empty %}#}
+{#            <h1 class="text-center">هیچ محصول لاین شده ای موجود نیست</h1>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-12 m-b30 m-t50 text-center">#}
+{#                <a href="{% url "product:lined_product" %}"#}
+{#                class="site-button m-t10 m-l10 radius-no more-btn-default">#}
+{#                بیشتر </a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- lined in the mine END-->#}
+{#</div>#}
+{#<!-- Content area END-->#}
+{##}
+{#<!-- Content END-->#}
+{#<!-- Footer -->#}
+{#<!-- Modal -->#}
+{#<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"#}
+{#     aria-hidden="true">#}
+{#    <div class="modal-dialog" role="document">#}
+{#        <div class="modal-content" style="background-color: rgb(255 255 255) ;">#}
+{#            <div class="modal-header">#}
+{#                <h5 class="modal-title" id="exampleModalLabel">اشترک گذاری</h5>#}
+{#                <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                    <span aria-hidden="true">&times;</span>#}
+{#                </button>#}
+{#            </div>#}
+{#            <div class="modal-body">#}
+{#                <form method="post" action="#">#}
+{#                    <input class="form-control" style="text-align: right; border-color: #e1e6eb ; background-color: #ffffff" placeholder="لینک را وارد کنید ..." type="url">#}
+{#                </form>#}
+{#            </div>#}
+{#            <div class="modal-footer">#}
+{#                <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>#}
+{#                <button type="button" class="btn btn-primary">ارسال</button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#{% endblock %}#}
+
+
+{% extends "site/base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% load social_share %}
+{% block search %}
+<!-- extra nav -->
+<style>
+    #foo {
+        height: 25px;
+        width: 40px;
+        color: white;
+        overflow: hidden;
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        -o-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+
+    #foo:hover {
+        width: 100%;
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        -o-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+
+    #foo i.fa {
+        position: relative;
+        height: 25px;
+        width: 30px;
+        margin: 0px;
+        font-size: 20px;
+        padding: 5px 0;
+        text-align: center;
+        box-sizing: border-box;
+        opacity: 1;
+        float: left;
+    }
+
+    #foo i.fa-share-square-o {
+        opacity: 1;
+        width: 45px;
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        -o-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+
+    #foo:hover .fa {
+        opacity: 1;
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        -o-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+
+    #foo:hover a .fa {
+        color: white;
+    }
+
+    #foo:hover a:hover .fa {
+        color: #EE7554;
+    }
+
+    #foo:hover .fa-share-square-o {
+        opacity: 0;
+        width: 0px;
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        -o-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+</style>
+<div class="extra-nav" style="height: 65px;">
+    <div class="extra-cell ">
+        <button id="quik-search-btn" type="button" class="site-button bg-white"
+                style="color: #1A74B5;font-size: large;padding-top: 5px"><i
+                class="fa fa-search font-weight-300"></i><a class="font-weight-300"> جستجو </a>
+        </button>
+    </div>
+</div>
+<!-- Quik search -->
+<div class="dez-quik-search "  style="top: 65px">
+    <form action="{%   url "product:search"  %}" style="margin: auto;margin-top: 20px">
+        <div class="row ">
+            <div class="col-4 form-group text-left">
+                <input name="stone_type"  class="form-control " placeholder="نوع سنگ"
+                       type="text"
+                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-4 form-group text-left">
+                <input name="stone_name"  class="form-control " placeholder="نام سنگ"
+                       type="text"
+                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-2 form-group text-left">
+                <input name="color_code"  class="form-control " placeholder="رنگ"
+                       type="text"
+                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-2 form-group text-left">
+                <span id="quik-search-remove"><i class="fa fa-remove"></i></span>
+            </div>
+
+        </div>
+        <div class="row " style="margin-top: -10px">
+            <div class="col-3 form-group text-left">
+                <input name="lenght_min"  class="form-control " placeholder="حداقل طول"
+                       type="number"
+                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-3 form-group text-left">
+                <input name="length_max" class="form-control " placeholder="حداکثر طول"
+                       type="number"
+                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-2 form-group text-left">
+                <input name="height_min"  class="form-control " placeholder="حداقل ارتفاع"
+                       type="number"
+                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-2 form-group text-left">
+                <input name="width_max"  class="form-control " placeholder="حداکثر ارتفاع"
+                       type="number"
+                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-2 form-group text-left">
+                <button class="site-button dz-xs-flex m-r5"
+                        style="background-color: #1A74B5; width: 100%">
+                    جستجو
+                </button>
+            </div>
+
+        </div>
+        <div class="row " style="margin-top: -10px">
+            <div class="col-3 form-group text-left">
+                <input name="mine"  class="form-control " placeholder="محل دپو"
+                       type="text"
+                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-4 form-group text-left">
+                <input name="ton"  class="form-control " placeholder="تناژ مورد نیاز"
+                       type="number"
+                       style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-3 form-group text-left">
+                <input name="grading_code"  class="form-control " placeholder="درجه بندی"
+                       type="text"
+                       style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+            </div>
+            <div class="col-2 form-group text-left">
+                <a href="{% url 'config:site_home' %}" class="site-button dz-xs-flex m-r5" style="background-color: #df0000;  width: 100%">Reset</a>
+            </div>
+        </div>
+        <!--                <input name="search" value="" type="text" class="form-control" placeholder="جستجو">-->
+        <!--                            <span id="quik-search-remove"><i class="fa fa-remove"></i></span>-->
+    </form>
+    <div class="dez-quik-search-opacity w-100 h-100 bg-green"
+         style="position: absolute;top: 0;z-index: -1">dafsdf
+    </div>
+</div>
+{% endblock %}
+<!-- main nav -->
+{% block content %}
+<!-- header END -->
+<!-- Content -->
+<div class="page-content font-style-2">
+    <!-- Slider -->
+    <div class="main-slider style-two default-banner rev-slider-rtl" id="home">
+        <div class="tp-banner-container">
+            <div class="tp-banner " style="height: 600px; background-color: #1D1D1F">
+                <div id="rev_slider_1175_1_wrapper" class="rev_slider_wrapper fullscreen-container"
+                     data-alias="duotone192" data-source="gallery" {}
+                     style="background-color:transparent;padding:0px;">
+
+                </div>
+                <div class="container">
+                    <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner p-a25 m-auto">
+                            {% for obj in sliders %}
+                            <div class="carousel-item  act-{{ forloop.counter }}" style="text-align: center">
+                                {% for sliderimage in obj.image_exportal_logo.all %}
+                                {% if forloop.counter < 2 %}
+
+                                                               <img src="{{ sliderimage.photo.url }}" alt="Los Angeles"
+                                     style="max-width: 75%;height: 550px;">
+
+
+
+
+                                {% endif %}
+                                {% endfor %}
+                                <div class="carousel-caption "
+                                     style="width: 358px; height: 358px;position: absolute;top: 17%; left: 4%">
+                                    <div class="h-25"></div>
+                                    <p class="text-uppercase font-weight-300 text-black"
+                                       style="font-size: x-large; font-weight: bold">
+                                        {{ obj.mine.stone_type }}</p>
+                                    <p class="text-uppercase font-weight-500 "
+                                       style="font-size: xx-large;color: #0089df">{{obj.stone_name}}</p>
+                                    <a href="{% url 'product:exportal_product_detail' obj.unique_id %}"
+                                    class="site-button m-t40 m-l10 radius-no font-weight-300"
+                                    style="font-family: 'Vazir';background-color: #0089df;font-size: x-small;padding:
+                                    10px
+                                    40px 10px 40px;">
+                                    مشاهده
+                                    جزئیات </a>
+                                    <div class="w-100 h-100 "
+                                         style="position: absolute; top: 0%;z-index: -1;background-color: #e7e7e7; opacity: 68%;"></div>
+                                    <!--                                    <img style="position: absolute;top: 0;left: 0" src="images/lable1.png">-->
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#demo" data-slide="prev" style="top: 20% !important">
+                    <span><i class="fa fa-5x fa-angle-right"></i></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next" style="top: 20% !important">
+                    <span><i class="fa fa-5x fa-angle-left"></i></span>
+                </a>
+            </div>
+            <!--                    </div>-->
+        </div>
+    </div>
+</div>
+<!-- Slider END -->
+
+<!-- Content area -->
+<div class="section-full content-inner overlay-white-dark"
+     style="background-image:url({% static 'images/bgprofile3.jpg' %});margin-top: -50px; background-attachment:fixed">
+    <!-- special offer -->
+    <div class="container-fluid p-l90 p-r90">
+        <div class="section-head text-left" style="margin-right: 30px">
+            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">پیشنهاد ویژه</p>
+            <div class="clear"></div>
+        </div>
+        <div class="row">
+            {% for pro in special_offer %}
+            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">
+                <div class="dez-box fly-box" style="margin: -10px;">
+                    {% for m in pro.image_exportal_logo.all %}
+                    {% if forloop.counter < 2 %}
+
+
+
+                      {% thumbnail m.photo "600x600" as test %}
+                    <div class="dez-media"><a
+                            href="{% url 'product:exportal_product_detail' pro.unique_id %}"><img src="{{ test.url }}" class="card-img-top"></a>
+                    </div>
+                {% endthumbnail %}
+                    {% endif %}
+                    {% endfor %}
+                    <div class="dez-info p-10 row text-center m-auto"
+                         style="background-color: #1D1D1F">
+                        <div id="box" class="col-lg-6 text-left" style="margin-top: auto">
+                                    </a>
+                                    <div id="foo">
+                                        <i class="fa fa-share-alt text-white" style="font-size: large"></i>
+                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-telegram"></i></a>
+                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-whatsapp"></i></a>
+                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-linkedin"></i></a>
+                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه
+                            بندی :</a><a class="font-weight-600 text-white"
+                                         href="{% url "blog:blog_list" %}"> {{ pro.grading_code }}</a>
+                        </div>
+                    </div>
+                    <div class="dez-info bg-white text-center m-auto row ">
+                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"
+                                                                    style="color: #333;font-size: large">{{pro.stone_name }}
+                        </a></div>
+                    </div>
+
+                    <div class="dez-info p-a15 bg-white row m-auto ">
+
+                        <div class="col-6 ">
+                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">
+                                <li>نوع سنگ</li>
+                                <li>ابعاد</li>
+                                <li>معدن</li>
+                                <li>وزن تقریبی</li>
+                                <li>موجودی</li>
+
+                            </ul>
+                        </div>
+                        <div class="col-6 ">
+                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">
+                                <li>{{ pro.mine.stone_type }}</li>
+                                <li>{{ pro.width }}*{{ pro.length }}*{{ pro.height }}</li>
+                                <li>{{ pro.mine.province }}</li>
+                                <li>{{ pro.approximate_tonnage }}</li>
+                                <li>{{ pro.supply }}</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="dez-info p-a0 bg-white row m-auto ">
+
+                        <div class="col-6"><a style="font-size: 9px"
+                                              href="{% url 'account:create_favorite' pro.unique_id %}"
+                            class="site-button add-to-wish-list-btn text-white"
+                            ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>
+                            به لیست علاقه مندی های من اضافه شود
+                            </a></div>
+                        <div class="col-6"><a href="{% url 'product:exportal_product_detail' pro.unique_id %}"
+                            class="site-button block-num-block-box bg-white text-secondry"
+                            style="font-size: 14px !important;"
+                            >بلوک
+                            : {{ pro.unique_id }}</a></div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <h1 class="text-center">هیچ پیشنهاد ویؤه ای موجود نیست موجود نیست</h1>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12 m-b30 m-t50 text-center">
+                <a href="{% url "product:special_offer" %}"
+                class="site-button m-t10 m-l10 radius-no more-btn-default">
+                بیشتر </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid p-l90 p-r90">
+        <div class="section-head text-left" style="margin-right: 30px">
+            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">صادراتی</p>
+            <div class="clear"></div>
+        </div>
+        <div class="row">
+           {% for items in exportal %}
+            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">
+                <div class="dez-box fly-box" style="margin: -10px;">
+                    {% for m in items.image_exportal_logo.all %}
+                    {% if forloop.counter < 2 %}
+
+
+
+                      {% thumbnail m.photo "600x600" as test %}
+                    <div class="dez-media"><a
+                            href="{% url 'product:exportal_product_detail' items.unique_id %}"><img src="{{ test.url }}" class="card-img-top"></a>
+                    </div>
+                {% endthumbnail %}
+                    {% endif %}
+                    {% endfor %}
+                    <div class="dez-info p-10 row text-center m-auto"
+                         style="background-color: #1D1D1F">
+                        <div id="box" class="col-lg-6 text-left" style="margin-top: auto">
+                                    </a>
+                                    <div id="foo">
+                                        <i class="fa fa-share-alt text-white" style="font-size: large"></i>
+                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-telegram"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-whatsapp"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه
+                            بندی :</a><a class="font-weight-600 text-white"
+                                         href="{% url "blog:blog_list" %}"> {{ items.grading_code }}</a>
+                        </div>
+                    </div>
+                    <div class="dez-info bg-white text-center m-auto row ">
+                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"
+                                                                    style="color: #333;font-size: large">{{items.stone_name }}
+                        </a></div>
+                    </div>
+
+                    <div class="dez-info p-a15 bg-white row m-auto ">
+
+                        <div class="col-6 ">
+                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">
+                                <li>نوع سنگ</li>
+                                <li>ابعاد</li>
+                                <li>معدن</li>
+                                <li>وزن تقریبی</li>
+                                <li>موجودی</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 ">
+                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">
+                                <li>{{ items.mine.stone_type }}</li>
+                                <li>{{ items.width }}*{{ items.length }}*{{ items.height }}</li>
+                                <li>{{ items.mine.province }}</li>
+                                <li>{{ items.approximate_tonnage }}</li>
+                                <li>{{ items.supply }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="dez-info p-a0 bg-white row m-auto ">
+
+                        <div class="col-6"><a style="font-size: 9px"
+                                              href="{% url 'account:create_favorite' items.unique_id %}"
+                            class="site-button add-to-wish-list-btn text-white"
+                            ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>
+                            به لیست علاقه مندی های من اضافه شود
+                            </a></div>
+                        <div class="col-6"><a href="{% url 'product:exportal_product_detail' items.unique_id %}"
+                            class="site-button block-num-block-box bg-white text-secondry"
+                            style="font-size: 14px !important;"
+                            >بلوک
+                            : {{ items.unique_id }}</a></div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <h1 class="text-center">هیچ پیشنهاد ویؤه ای موجود نیست موجود نیست</h1>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12 m-b30 m-t50 text-center">
+                <a href="{% url "product:exportal_list" %}"
+                class="site-button m-t10 m-l10 radius-no more-btn-default">
+                بیشتر </a>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="container-fluid p-l90 p-r90">
+        <div class="section-head text-left" style="margin-right: 30px">
+            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">لاین شده در معدن</p>
+            <div class="clear"></div>
+        </div>
+        <div class="row">
+           {% for items in lined %}
+            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">
+                <div class="dez-box fly-box" style="margin: -10px;">
+                    {% for m in items.image_lined.all %}
+                    {% if forloop.counter < 2 %}
+                      {% thumbnail m.photo "600x600" as test %}
+                    <div class="dez-media"><a
+                            href="{% url 'product:lined_product_detail' items.unique_id %}"><img src="{{ test.url }}" class="card-img-top"></a>
+                    </div>
+                {% endthumbnail %}
+                    {% endif %}
+                    {% endfor %}
+                    <div class="dez-info p-10 row text-center m-auto"
+                         style="background-color: #1D1D1F">
+                        <div id="box" class="col-lg-6 text-left" style="margin-top: auto">
+                                    </a>
+                                    <div id="foo">
+                                        <i class="fa fa-share-alt text-white" style="font-size: large"></i>
+                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-telegram"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-whatsapp"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه
+                            بندی :</a><a class="font-weight-600 text-white"
+                                         href="{% url "blog:blog_list" %}"> {{ items.grading_code }}</a>
+                        </div>
+                    </div>
+                    <div class="dez-info bg-white text-center m-auto row ">
+                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"
+                                                                    style="color: #333;font-size: large">{{items.stone_name }}
+                        </a></div>
+                    </div>
+
+                    <div class="dez-info p-a15 bg-white row m-auto ">
+
+                        <div class="col-6 ">
+                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">
+                                <li>نوع سنگ</li>
+                                <li>ابعاد</li>
+                                <li>معدن</li>
+                                <li>وزن تقریبی</li>
+                                <li>موجودی</li>
+
+                            </ul>
+                        </div>
+                        <div class="col-6 ">
+                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">
+                                <li>{{ items.mine.stone_type }}</li>
+                                <li>{{ items.width }}*{{ items.length }}*{{ items.height }}</li>
+                                <li>{{ items.mine.province }}</li>
+                                <li>{{ items.approximate_tonnage }}</li>
+                                <li>{{ items.supply }}</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="dez-info p-a0 bg-white row m-auto ">
+
+                        <div class="col-6"><a style="font-size: 9px"
+                                              href="{% url 'account:create_favorite' items.unique_id %}"
+                            class="site-button add-to-wish-list-btn text-white"
+                            ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>
+                            به لیست علاقه مندی های من اضافه شود
+                            </a></div>
+                        <div class="col-6"><a href="{% url 'product:lined_product_detail' items.unique_id %}"
+                            class="site-button block-num-block-box bg-white text-secondry"
+                            style="font-size: 14px !important;"
+                            >بلوک
+                            : {{ items.unique_id }}</a></div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <h1 class="text-center">هیچ محصول لاین شده ای موجود نیست</h1>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12 m-b30 m-t50 text-center">
+                <a href="{% url "product:lined_product" %}"
+                class="site-button m-t10 m-l10 radius-no more-btn-default">
+                بیشتر </a>
+            </div>
+        </div>
+    </div>
+
+
+{#    <div class="container-fluid p-l90 p-r90">#}
+{#        <div class="section-head text-left" style="margin-right: 30px">#}
+{#            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">لاین شده در معدن</p>#}
+{#            <div class="clear"></div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#           {% for l in lined %}#}
+{#            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">#}
+{#                <div class="dez-box fly-box" style="margin: -10px;">#}
+{#                    {% for m in items.image_exportal_logo.all %}#}
+{#                    {% if forloop.counter < 2 %}#}
+{##}
+{##}
+{##}
+{#                      {% thumbnail m.photo "600x600" as test %}#}
+{#                    <div class="dez-media"><a#}
+{#                            href="{% url "product:lined_product_detail" l.pk %}"><img src="{{ test.url }}" class="card-img-top"></a>#}
+{#                    </div>#}
+{#                {% endthumbnail %}#}
+{#                    {% endif %}#}
+{#                    {% endfor %}#}
+{#                    <div class="dez-info p-10 row text-center m-auto"#}
+{#                         style="background-color: #1D1D1F">#}
+{#                        <div id="box" class="col-lg-6 text-left" style="margin-top: auto">#}
+{#                                    </a>#}
+{#                                    <div id="foo">#}
+{#                                        <i class="fa fa-share-alt text-white" style="font-size: large"></i>#}
+{#                                        <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-telegram"></i></a>#}
+{#                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-whatsapp"></i></a>#}
+{#                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-linkedin"></i></a>#}
+{#                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-envelope"></i></a>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه#}
+{#                            بندی :</a><a class="font-weight-600 text-white"#}
+{#                                         href="{% url "blog:blog_list" %}"> {{ l.grading_code }}</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info bg-white text-center m-auto row ">#}
+{#                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"#}
+{#                                                                    style="color: #333;font-size: large">{{l.stone_name }}#}
+{#                        </a></div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="dez-info p-a15 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">#}
+{#                                <li>نوع سنگ</li>#}
+{#                                <li>ابعاد</li>#}
+{#                                <li>معدن</li>#}
+{#                                <li>وزن تقریبی</li>#}
+{##}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">#}
+{#                                <li>{{ l.mine.stone_type }}</li>#}
+{#                                <li>{{ l.width }}*{{ l.length }}*{{ l.height }}</li>#}
+{#                                <li>{{ l.mine.province }}</li>#}
+{#                                <li>{{ l.approximate_tonnage }}</li>#}
+{##}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-a0 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6"><a style="font-size: 9px"#}
+{#                                              href="{% url "account:create_favorite" l.unique_id %}"#}
+{#                            class="site-button add-to-wish-list-btn text-white"#}
+{#                            ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>#}
+{#                            به لیست علاقه مندی های من اضافه شود#}
+{#                            </a></div>#}
+{#                        <div class="col-6"><a href="{% url "product:lined_product_detail" l.pk %}"#}
+{#                            class="site-button block-num-block-box bg-white text-secondry"#}
+{#                            style="font-size: 14px !important;"#}
+{#                            >بلوک#}
+{#                            : {{ l.unique_id }}</a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% empty %}#}
+{#            <h1 class="text-center">هیچ پیشنهاد ویؤه ای موجود نیست موجود نیست</h1>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-12 m-b30 m-t50 text-center">#}
+{#                <a href="{% url "product:lined_product" %}"#}
+{#                class="site-button m-t10 m-l10 radius-no more-btn-default">#}
+{#                بیشتر </a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="container-fluid p-l90 p-r90">#}
+{#        <div class="section-head text-left" style="margin-right: 30px">#}
+{#            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">لاین شده در معدن</p>#}
+{#            <div class="clear"></div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#              {% for l in lined %}#}
+{#            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">#}
+{#                <div class="dez-box fly-box" style="margin: -10px;">#}
+{#                    <div class="dez-media"><a href="lined-single.html"><img src="images/stone11.jpg" alt=""></a>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-10 row text-center m-auto"#}
+{#                         style="background-color: #1D1D1F">#}
+{#                        <div class="col-lg-6 text-left" style="margin-top: auto"><a#}
+{#                                href="javascript:void(0);"#}
+{#                                style="font-size: large"#}
+{#                                class="fa fa-share-alt text-white "></a>#}
+{#                        </div>#}
+{#                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه#}
+{#                            بندی :</a><a class="font-weight-600 text-white"#}
+{#                                         href="javascript:void(0);"> {{l.grading_code}}</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info bg-white text-center m-auto row ">#}
+{#                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"#}
+{#                                                                    style="color: #333;font-size: large">{{ l.stone_name }}#}
+{#                             </a></div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="dez-info p-a15 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">#}
+{#                                <li>نوع سنگ</li>#}
+{#                                <li>ابعاد</li>#}
+{#                                <li>معدن</li>#}
+{#                                <li>وزن تقریبی</li>#}
+{##}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">#}
+{#                            <li>{{ l.mine.stone_type }}</li>#}
+{#                                <li>{{ l.width }}*{{ l.length }}*{{ l.height }}</li>#}
+{#                                <li>{{ l.mine.province }}</li>#}
+{#                                <li>{{ l.approximate_tonnage }}</li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-a0 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6"><a style="font-size: 9px" href=""#}
+{#                                              class="site-button add-to-wish-list-btn text-white"#}
+{#                        ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>#}
+{#                            به لیست علاقه مندی های من اضافه شود#}
+{#                        </a></div>#}
+{#                        <div class="col-6"><a class="site-button block-num-block-box bg-white text-secondry"#}
+{#                                              style="font-size: 14px !important;"#}
+{#                        >بلوک#}
+{#                            : {{  lo.unique_id}}</a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% empty %}#}
+{#            <h1 class="text-center">هیچ محصول لاین شده ای موجود نیست</h1>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-12 m-b30 m-t50 text-center">#}
+{#                <a href="{% url "product:exportal_list" %}"#}
+{#                class="site-button m-t10 m-l10 radius-no more-btn-default">#}
+{#                بیشتر </a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+    <!-- export END-->
+    <!-- lined in the mine -->
+
+{#*****************************************************************#}
+{#*****************************************************************#}
+{#    <div class="container-fluid p-l90 p-r90">#}
+{#        <div class="section-head text-left" style="margin-right: 30px">#}
+{#            <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large">لاین شده در معدن</p>#}
+{##}
+{#            <div class="clear"></div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            {% for l in lined %}#}
+{#            <div class="col-md-12 col-lg-4 col-sm-12 m-b30">#}
+{#                <div class="dez-box fly-box" style="margin: -10px;">#}
+{#                    <div class="dez-media"><a href="lined-single.html"><img src="images/stone11.jpg" alt=""></a>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-10 row text-center m-auto"#}
+{#                         style="background-color: #1D1D1F">#}
+{#                        <div class="col-lg-6 text-left" style="margin-top: auto"><a#}
+{#                                href="javascript:void(0);"#}
+{#                                style="font-size: large"#}
+{#                                class="fa fa-share-alt text-white "></a>#}
+{#                        </div>#}
+{#                        <div class="col-lg-6 text-right" style="font-size: larger"><a class="text-white">درجه#}
+{#                            بندی :</a><a class="font-weight-600 text-white"#}
+{#                                         href="javascript:void(0);"> {{l.grading_code}}</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info bg-white text-center m-auto row ">#}
+{#                        <div class="col-lg-12 font-weight-bold "><a href="javascript:void(0);"#}
+{#                                                                    style="color: #333;font-size: large">{{ l.stone_name }}#}
+{#                             </a></div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="dez-info p-a15 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r50" style="list-style-type:none">#}
+{#                                <li>نوع سنگ</li>#}
+{#                                <li>ابعاد</li>#}
+{#                                <li>معدن</li>#}
+{#                                <li>وزن تقریبی</li>#}
+{#                                #}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-6 ">#}
+{#                            <ul class="product-box-ul font-weight-300 p-r60" style="list-style-type:none;">#}
+{#                            <li>{{ l.mine.stone_type }}</li>#}
+{#                                <li>{{ l.width }}*{{ l.length }}*{{ l.height }}</li>#}
+{#                                <li>{{ l.mine.province }}</li>#}
+{#                                <li>{{ l.approximate_tonnage }}</li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="dez-info p-a0 bg-white row m-auto ">#}
+{##}
+{#                        <div class="col-6"><a style="font-size: 9px" href=""#}
+{#                                              class="site-button add-to-wish-list-btn text-white"#}
+{#                        ><i class="fa fa-heart-o text-warning" style="margin-left: 5px"></i>#}
+{#                            به لیست علاقه مندی های من اضافه شود#}
+{#                        </a></div>#}
+{#                        <div class="col-6"><a class="site-button block-num-block-box bg-white text-secondry"#}
+{#                                              style="font-size: 14px !important;"#}
+{#                        >بلوک#}
+{#                            : {{  lo.unique_id}}/a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% empty %}#}
+{#            <h1 class="text-center">هیچ محصول لاین شده ای موجود نیست</h1>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-12 m-b30 m-t50 text-center">#}
+{#                <a href="{% url "product:lined_product" %}"#}
+{#                class="site-button m-t10 m-l10 radius-no more-btn-default">#}
+{#                بیشتر </a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+{#*****************************************************************#}
+    <!-- lined in the mine END-->
+</div>
+<!-- Content area END-->
+
+<!-- Content END-->
+<!-- Footer -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: rgb(255 255 255) ;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">اشترک گذاری</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="#">
+                    <input class="form-control" style="text-align: right; border-color: #e1e6eb ; background-color: #ffffff" placeholder="لینک را وارد کنید ..." type="url">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                <button type="button" class="btn btn-primary">ارسال</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

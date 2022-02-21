@@ -1,0 +1,210 @@
+{%  load static %}
+{% load mine_footer %}
+{% load blog %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+    <meta name="robots" content=""/>
+    <meta name="description" content=""/>
+    <meta property="og:title" content="Constructzilla - Construction Template"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:image" content=""/>
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- FAVICONS ICON -->
+    <link rel="icon" href="{% static 'site/images/favicon.ico' %}" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'site/images/favicon.png' %}"/>
+
+    <!-- PAGE TITLE HERE -->
+    <title>Koopdepot</title>
+
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--[if lt IE 9]>
+    <script src="{% static 'site/js/html5shiv.min.js' %}"></script>
+    <script src="{% static 'site/js/respond.min.js' %}"></script>
+    <![endif]-->
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'site/css/plugins.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'site/css/style.min.css' %}">
+    <link class="skin" rel="stylesheet" type="text/css" href="{% static 'site/css/skin/skin-1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'site/css/templete.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'site/css/style-rtl.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'site/plugins/fonts/dana.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'site/plugins/fonts/vazir.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'site/plugins/fonts/iransans.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'site/css/coming-soon.css' %}">
+    <!-- REVOLUTION SLIDER CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'site/plugins/revolution/revolution/css/settings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'site/plugins/revolution/revolution/css/navigation.css' %}">
+    <!-- REVOLUTION SLIDER CSS END -->
+
+</head>
+<body id="bg">
+<div id="loading-area"></div>
+<div class="page-wraper">
+    <!-- header -->
+    <header class="site-header header mo-left header-style-1">
+        <!-- top bar -->
+        <div class="top-bar no-skew bg-white" style="height: 22px;">
+            <div class="container-fluid p-r60 p-l60">
+                <div class="row d-flex justify-content-between">
+                    <div class="dez-topbar-left">
+                        <ul class="social-bx list-inline  pull-left">
+                            <li style="margin-top: -5px;margin-right: 40px"><a href="javascript:void(0);" style="font-size: 11px;"> فارسی</a></li>
+                            <li style="margin-top: -10px;"><a href="{% url 'account:profile' %}" style="margin-right: 10px;font-size: 17px;"
+                                                            class="fa fa-2x fa-user-circle-o"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top bar END-->
+        <!-- main header -->
+        <div class="sticky-header main-bar-wraper navbar-expand-lg">
+            <div class="main-bar clearfix ">
+                <div class="container-fluid p-l60 p-r60 clearfix">
+                    <!-- website logo -->
+                    <div class="logo-header mostion dark" style="height: 25px;">
+                        <a href="{%   url "config:site_home" %}">
+                            <img src="{% static 'site/images/logo4.png' %}" width="193" height="89" alt="">
+                        </a>
+                    </div>
+                    <!-- nav toggle button -->
+                    <button class="navbar-toggler collapsed navicon justify-content-end" type="button"
+                            data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                   {% block search %}
+                    {% endblock %}
+                {% include "site/navbar.html" %}
+            </div>
+        </div>
+        <!-- main header END -->
+    </header>
+{% block content %}
+{% endblock %}
+  <footer class="site-footer">
+        <!-- footer top part -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+         {% blog_list %}
+                         
+                    <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
+                        <div class="widget widget_services">
+                            <h4 class="m-b15 text-uppercase">معادن</h4>
+                            <div class="dez-separator-outer m-b10">
+                                <div class="dez-separator bg-white style-skew"></div>
+                            </div>
+                            <ul>
+                                
+                {% category_navbar %}                
+                                
+                                                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
+                        <div class="widget widget_services">
+                            <h4 class="m-b15 text-uppercase">بلاک ها</h4>
+                            <div class="dez-separator-outer m-b10">
+                                <div class="dez-separator bg-white style-skew"></div>
+                            </div>
+                            <ul>
+                                <li><a href="{% url "product:exportal_list" %}">صادراتی</a></li>
+                                <li><a href="{% url "product:special_offer" % }">پیشنهاد ویژه</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
+                        <div class="widget widget_about m-r50">
+                            <div class="logo-footer"><a href="{%   url "config:site_home" %}"><img src="{% static 'site/images/logo5.png' %}" alt=""></a></div>
+                            <div class="text-center">
+                                <ul class="dez-social-icon dez-border">
+                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer bottom part -->
+        <div class="footer-bottom ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 text-left">
+                        <span>© کپی رایت 2021</span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 text-center">
+                        <a href="about-1.html">ROTRO GROUP</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer END-->
+    <!-- scroll top button -->
+    <button class="scroltop fa fa-arrow-up style4"></button>
+</div>
+<!-- JavaScript  files ========================================= -->
+<script src="{% static 'site/js/jquery.min.js' %}"></script><!-- JQUERY.MIN JS -->
+<script src="{% static 'site/plugins/bootstrap/js/popper.min.js' %}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{% static 'site/plugins/bootstrap/js/bootstrap.min.js' %}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{% static 'site/plugins/bootstrap-select/bootstrap-select.min.js' %}"></script><!-- FORM JS -->
+<script src="{% static 'site/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js' %}"></script><!-- FORM JS -->
+<script src="{% static 'site/plugins/magnific-popup/magnific-popup.js' %}"></script><!-- MAGNIFIC POPUP JS -->
+<script src="{% static 'site/plugins/counter/waypoints-min.js' %}"></script><!-- WAYPOINTS JS -->
+<script src="{% static 'site/plugins/counter/counterup.min.js' %}"></script><!-- COUNTERUP JS -->
+<script src="{% static 'site/plugins/imagesloaded/imagesloaded.js' %}"></script><!-- IMAGESLOADED -->
+<script src="{% static 'site/plugins/masonry/masonry-3.1.4.js' %}"></script><!-- MASONRY -->
+<script src="{% static 'site/plugins/masonry/masonry.filter.js' %}"></script><!-- MASONRY -->
+<script src="{% static 'site/plugins/owl-carousel/owl.carousel.js' %}"></script><!-- OWL SLIDER -->
+<script src="{% static 'site/js/custom.js' %}"></script><!-- CUSTOM FUCTIONS  -->
+<script src="{% static 'site/js/dz.carousel.min.js' %}"></script><!-- SORTCODE FUCTIONS  -->
+<script src="{% static 'site/js/dz.ajax.js' %}"></script><!-- CONTACT JS  -->
+
+<script src="{% static 'site/plugins/revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
+<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.carousel.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.migration.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script src="{% static 'site/plugins/revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
+<script src="{% static 'site/js/rev.slider.js' %}"></script>
+    <script src="{% static 'site/js/coming-soon.js' %}"></script>
+<script>
+    $(".act-1").addClass("active");
+    $('.modal-backdrop').remove();
+$('body').removeClass( "modal-open" );
+    jQuery(document).ready(function () {
+        'use strict';
+        dz_rev_slider_6();
+    });	/*ready*/
+</script>
+</body>
+</html>
+{% static 'site/' %}

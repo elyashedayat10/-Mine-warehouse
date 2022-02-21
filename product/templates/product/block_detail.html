@@ -1,0 +1,646 @@
+{% extends "site/base.html" %}
+{% block search %}
+<div id="loading-area"></div>
+<div class="page-wraper">
+
+
+    <!-- Side Nav -->
+
+    <!-- hold -->
+    <div id="mySidenavHold" class="sidenav coming-side-bar content "><a href="javascript:void(0)"
+                                                                        class="closebtnhold bg-primary">&times;</a>
+        <div class="clearfix"></div>
+        <div class="p-a30 text-center">
+            <h2>فرم درخواست هولد</h2>
+            <div class="dez-separator bg-primary "></div>
+            <p class="font-size-10">نسبت به تکمیل فرم جهت ثبت درخواست اقدام فرمایید یا <input class=" bg-gray"
+                                                                                              style="background-color: #ffffff5c;height: 35px; font-size: 12px;color: black;border: 1px solid #e1e6ea"
+                                                                                              type="text"
+                                                                                              placeholder="کد VIP خود را وارد نمایید">
+                <br>بلوک انتخابی به مدت ۴۸ ساعت به نام شما نگه داشته میشود و در صورت نیاز به زمان بیشتر با شماره
+                ۰۹۱۹۷۴۴۹۱۹۹ تماس حاصل فرمایید.</p>
+            <form action="#">
+                <p class="text-left">زمینه فعالیت</p>
+                <div class="row">
+
+                    <div class="col-2 p-a0 m-a0">
+                        <input type="radio" id="html" name="fav_language" value="کارخانه سنگ بری">
+                        <label for="html" class="font-weight-400">کارخانه سنگ بری</label>
+                    </div>
+                    <div class="col-1 p-a0 m-a0">
+                        <input type="radio" id="css" name="fav_language" value="صادرات">
+                        <label for="css" class="font-weight-400">صادرات</label>
+                    </div>
+                    <div class="col-1 p-a0 m-a0">
+                        <input type="radio" id="javascript" name="fav_language" value="انبار بلوک">
+                        <label for="javascript" class="font-weight-400">انبار بلوک</label>
+                    </div>
+                    <div class="col-2  p-a0 m-a0">
+                        <input type="radio" id="tr" name="fav_language" value="فروش داخلی بلوک">
+                        <label for="javascript" class="font-weight-400">فروش داخلی بلوک</label>
+                    </div>
+
+                    <div class="col-2 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="سایر"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-4 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="تعداد/ تناژ مورد نیاز مشابه"
+                               type="text"
+                        />
+                    </div>
+
+                </div>
+                <div class="row p-t30">
+                    <div class="col-2 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="نام"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-2 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="نام خانوادگی"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-4 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="تلفن"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-4 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="ایمیل"
+                               type="text"
+                        />
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-12 form-group text-left">
+                        <label for="javascript">علت درخواست</label>
+                        <textarea name="dzName" class="form-control "
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-4 form-group text-left">
+                        <label for="javascript">آپلود فایل</label>
+                        <input name="dzName" required="" class="form-control " placeholder="ایمیل"
+                               type="file"
+                        />
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-10 form-group text-right">
+                    </div>
+                    <div class="col-2 form-group text-right">
+                        <button class="site-button dz-xs-flex m-r5"
+                                style="background-color: #1A74B5; width: 100%">
+                            ارسال
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <!-- hold end -->
+
+    <!-- visit -->
+    <div id="mySidenavVisit" class="sidenav coming-side-bar content "><a href="javascript:void(0)"
+                                                                         class="closebtnvisit bg-primary">&times;</a>
+        <div class="clearfix"></div>
+        <div class="p-a30 text-center">
+            <h2>فرم درخواست بازدید</h2>
+            <div class="dez-separator bg-primary "></div>
+            <form action="#">
+                <p class="text-left">زمینه فعالیت</p>
+                <div class="row">
+
+                    <div class="col-2 p-a0 m-a0">
+                        <input type="radio" name="fav_language" value="کارخانه سنگ بری">
+                        <label for="html" class="font-weight-400">کارخانه سنگ بری</label>
+                    </div>
+                    <div class="col-1 p-a0 m-a0">
+                        <input type="radio" name="fav_language" value="صادرات">
+                        <label for="css" class="font-weight-400">صادرات</label>
+                    </div>
+                    <div class="col-1 p-a0 m-a0">
+                        <input type="radio" name="fav_language" value="انبار بلوک">
+                        <label for="javascript" class="font-weight-400">انبار بلوک</label>
+                    </div>
+                    <div class="col-2  p-a0 m-a0">
+                        <input type="radio" name="fav_language" value="فروش داخلی بلوک">
+                        <label for="javascript" class="font-weight-400">فروش داخلی بلوک</label>
+                    </div>
+
+                    <div class="col-6 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="سایر"
+                               type="text"/>
+                    </div>
+
+
+                </div>
+                <div class="row p-t30">
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="عنوان"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="نام"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="نام خانوادگی"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="سمت"
+                               type="text"
+                        />
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="نام شرکت"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="تلفن"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-6 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="ایمیل"
+                               type="text"
+                        />
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-3 form-group text-left">
+                        <p>تاریخ و ساعت مطلوب</p>
+                    </div>
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="تاریخ"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="ساعت"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-3 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="دقیقه"
+                               type="text"
+                        />
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-12 form-group text-left">
+                        <label for="javascript">موضوع ملاقات/ بازدید</label>
+                        <textarea name="dzName" class="form-control "
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-4 form-group text-left">
+                        <label for="javascript">آپلود فایل</label>
+                        <input name="dzName" required="" class="form-control " placeholder="ایمیل"
+                               type="file"
+                        />
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-10 form-group text-right">
+                        <p class="font-size-10 text-left"> لطفا نسبت به تکمیل فرم جهت ثبت درخواست اقدام فرمایید.
+                        </p>
+                    </div>
+                    <div class="col-2 form-group text-right">
+                        <button class="site-button dz-xs-flex m-r5"
+                                style="background-color: #1A74B5; width: 100%">
+                            ارسال
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <!-- visit end -->
+
+    <!-- sample -->
+    <div id="mySidenavSample" class="sidenav coming-side-bar content "><a href="javascript:void(0)"
+                                                                          class="closebtnsample bg-primary">&times;</a>
+        <div class="clearfix"></div>
+        <div class="p-a30 text-center">
+            <h2>فرم درخواست نمونه</h2>
+            <div class="dez-separator bg-primary "></div>
+            <p class="font-size-10">نسبت به تکمیل فرم جهت ثبت درخواست اقدام فرمایید یا <input class=" bg-gray"
+                                                                                              style="background-color: #ffffff5c;height: 35px; font-size: 12px;color: black;border: 1px solid #e1e6ea"
+                                                                                              type="text"
+                                                                                              placeholder="کد VIP خود را وارد نمایید">
+                <br>اندازه نمونه استاندارد ۱۰*۱۰ سانتیمتر است جهت دریافت نمونه در ابعاد دیگر با شماره
+                ۰۹۱۹۷۴۴۹۱۹۹ تماس حاصل فرمایید.</p>
+            <form action="#">
+                <p class="text-left">زمینه فعالیت</p>
+                <div class="row">
+
+                    <div class="col-2 p-a0 m-a0">
+                        <input type="radio" name="fav_language" value="کارخانه سنگ بری">
+                        <label for="html" class="font-weight-400">کارخانه سنگ بری</label>
+                    </div>
+                    <div class="col-1 p-a0 m-a0">
+                        <input type="radio" name="fav_language" value="صادرات">
+                        <label for="css" class="font-weight-400">صادرات</label>
+                    </div>
+                    <div class="col-1 p-a0 m-a0">
+                        <input type="radio" name="fav_language" value="انبار بلوک">
+                        <label for="javascript" class="font-weight-400">انبار بلوک</label>
+                    </div>
+                    <div class="col-2  p-a0 m-a0">
+                        <input type="radio" name="fav_language" value="فروش داخلی بلوک">
+                        <label for="javascript" class="font-weight-400">فروش داخلی بلوک</label>
+                    </div>
+                    <div class="col-6 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="سایر"/>
+                    </div>
+                    <!--                    <div class="col-4 form-group text-left">-->
+                    <!--                        <input name="dzName" required="" class="form-control " placeholder="تعداد/ تناژ مورد نیاز مشابه"/>-->
+                    <!--                    </div>-->
+
+                </div>
+                <div class="row p-t30">
+                    <div class="col-2 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="نام"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-2 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="نام خانوادگی"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-4 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="تلفن"
+                               type="text"
+                        />
+                    </div>
+                    <div class="col-4 form-group text-left">
+                        <input name="dzName" required="" class="form-control " placeholder="ایمیل"
+                               type="text"
+                        />
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-12 form-group text-left">
+                        <label for="javascript">علت درخواست</label>
+                        <textarea name="dzName" class="form-control "
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-4 form-group text-left">
+                        <label for="javascript">آپلود فایل</label>
+                        <input name="dzName" required="" class="form-control " placeholder="ایمیل"
+                               type="file"
+                        />
+                    </div>
+                </div>
+                <div class="row p-t30">
+                    <div class="col-10 form-group text-right">
+                    </div>
+                    <div class="col-2 form-group text-right">
+                        <button class="site-button dz-xs-flex m-r5"
+                                style="background-color: #1A74B5; width: 100%">
+                            ارسال
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <!-- sample end -->
+
+    <!-- Side Nav End-->
+
+
+    <!-- header -->
+    <header class="site-header header mo-left header-style-1">
+        <!-- top bar -->
+        <div class="top-bar no-skew bg-white">
+            <div class="container-fluid p-r60 p-l60">
+                <div class="row d-flex justify-content-between">
+                    <div class="dez-topbar-left">
+                        <ul class="social-bx list-inline  pull-left">
+                            <li style="margin-top: 0px;margin-right: 40px"><a href="javascript:void(0);"> فارسی</a></li>
+                            <li style="margin-top: -4px"><a href="profile.html" style="margin-right: 10px"
+                                                            class="fa fa-2x fa-user-circle-o"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top bar END-->
+        <!-- main header -->
+<!--        <div class="sticky-header main-bar-wraper navbar-expand-lg">-->
+        <div class=" main-bar-wraper navbar-expand-lg">
+            <div class="main-bar clearfix ">
+                <div class="container-fluid p-l60 p-r60 clearfix">
+                    <!-- website logo -->
+                    <div class="logo-header mostion dark">
+                        <a href="index.html">
+                            <img src="images/logo4.png" width="193" height="89" alt="">
+                        </a>
+                    </div>
+                    <!-- nav toggle button -->
+                    <button class="navbar-toggler collapsed navicon justify-content-end" type="button"
+                            data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <!-- extra nav -->
+                    <div class="extra-nav">
+                        <div class="extra-cell ">
+                            <button id="quik-search-btn" type="button" class="site-button bg-white"
+                                    style="color: #1A74B5;font-size: large;padding-top: 5px"><i
+                                    class="fa fa-search font-weight-300"></i><a class="font-weight-300"> جستجو </a>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Quik search -->
+                    <div class="dez-quik-search ">
+                        <form action="#" style="margin: auto;margin-top: 20px">
+                            <div class="row ">
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="نوع سنگ"
+                                           type="text"
+                                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="نام سنگ"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="رنگ"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <span id="quik-search-remove"><i class="fa fa-remove"></i></span>
+                                </div>
+
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداقل طول"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداکثر طول"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداقل ارتفاع"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداکثر ارتفاع"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <button class="site-button dz-xs-flex m-r5"
+                                            style="background-color: #1A74B5; width: 100%">
+                                        جستجو
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="محل دپو"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="تناژ مورد نیاز"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="درجه بندی"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <button class="site-button dz-xs-flex m-r5"
+                                            style="background-color: #df0000;  width: 100%">
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                            <!--                <input name="search" value="" type="text" class="form-control" placeholder="جستجو">-->
+                            <!--                            <span id="quik-search-remove"><i class="fa fa-remove"></i></span>-->
+                        </form>
+                        <div class="dez-quik-search-opacity w-100 h-100 bg-green"
+                             style="position: absolute;top: 0;z-index: -1">dafsdf
+                        </div>
+                    </div>
+                    <!-- main nav -->
+{% endblock %}
+    <!-- header END -->
+{% block content %}
+    <!-- contact area -->
+    <div class="section-full content-inner-3 bg-single contact-style-1">
+        <div class="container-fluid" style="padding-right: 11%">
+            <div class="row">
+                <!-- right part start -->
+                <div class="col-lg-4  d-lg-flex row">
+                    <div style="margin-bottom: 5%; padding: 6%" class="col-12 bg-gray w-100 p-b0 border text-center contact-area border-1  align-self-stretch">
+                        <h2 class="m-b10">سیلور سلماس سفید</h2>
+                        <p>#2345634764567</p>
+
+                        <div class="row p-t20 m-r40">
+                            <div class="col-6">
+                                <ul class="no-margin text-left">
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>نوع سنگ</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>نام معدن</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>ابعاد</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>وزن تقریبی</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>درجه بندی</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b10">
+                                        <p>محل دپو</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b30">
+                                        <p>بلوک مشابه</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="no-margin text-left">
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>نوع سنگ</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>نام معدن</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>ابعاد</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>وزن تقریبی</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>درجه بندی</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b15">
+                                        <p>محل دپو</p>
+                                    </li>
+                                    <li class="icon-bx-wraper left m-b30">
+                                        <p>بلوک مشابه</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 p-a20 bg-gray w-100 m-b20 border text-center contact-area border-1  align-self-stretch">
+                        <div style="padding: 12px">
+                            <div class="col-md-12">
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="background-color: #1A74B5"><span>اطلاعات بیشتر</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- right part END -->
+                <!-- Left part start -->
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col-12">
+                            <ul id="masonry1" class="row dez-gallery-listing gallery-grid-4 m-lr0 mfp-gallery">
+                                <li class="office card-container ">
+                                    <div class="dez-box ">
+                                        <div class="dez-thum dez-img-overlay1 dez-img-effect zoom-slow"><a
+                                                href="javascript:void(0);">
+                                            <img style="width: 100%" src="images/stone3.jpg"> </a>
+                                            <div class="overlay-bx">
+                                                <div class="overlay-icon">
+                                                    <a href="images/stone3.jpg" class="mfp-link" title="عنوان"
+                                                       title="عنوان عکس">
+                                                        <i class="fa fa-picture-o icon-bx-xs"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12">
+                            <div class="row " style="margin-top: -5px">
+                                <div class="col-3"><img style="width: 100%" src="images/stone3.jpg">
+                                    <div class="dez-info p-10 row "
+                                         style="background-color: #1A74B5;margin: auto; text-align: center;">
+                                        <div class="col-lg-12"><a href="javascript:void(0);" style="color: white">
+                                            #245262356365 </a></div>
+                                    </div>
+                                </div>
+                                <div class="col-3"><img style="width: 100%" src="images/stone3.jpg">
+                                    <div class="dez-info p-10 row "
+                                         style="background-color: #1A74B5;margin: auto; text-align: center;">
+                                        <div class="col-lg-12"><a href="javascript:void(0);" style="color: white">
+                                            #245262356365 </a></div>
+                                    </div>
+                                </div>
+                                <div class="col-3"><img style="width: 100%" src="images/stone3.jpg">
+                                    <div class="dez-info p-10 row "
+                                         style="background-color: #1A74B5;margin: auto; text-align: center;">
+                                        <div class="col-lg-12"><a href="javascript:void(0);" style="color: white">
+                                            #245262356365 </a></div>
+                                    </div>
+                                </div>
+                                <div class="col-3"><img style="width: 100%" src="images/stone3.jpg">
+                                    <div class="dez-info p-10 row "
+                                         style="background-color: #1A74B5;margin: auto; text-align: center;">
+                                        <div class="col-lg-12"><a href="javascript:void(0);" style="color: white">
+                                            #245262356365 </a></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Left part END -->
+                <!-- Left part start -->
+                <div class="col-lg-11" style="padding-right: inherit; padding-left: 3%;">
+                    <div class=" bg-gray clearfix " style="padding:5px;">
+                        <div class="row">
+<!--                            <div class="col-1"></div>-->
+                            <div class="col-2 openbtnwish" style="margin:auto; ">
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="width: 100%;border-radius: 0 35px 0 0; background-color: #ffffff; color: gray; border: 1px solid gray;">
+                                    <span style="margin-right: -20px;font-size: x-small;color: black">افزودن به لیست انتخاب های من</span></button>
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                    <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;" class="fa fa-heart-o"></i></button>
+                            </div>
+                            <div class="col-2 openbtnhold" style="margin:auto; ">
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="width: 100%;border-radius: 0 35px 0 0; background-color:#FFAD3E; color: gray; border: 1px solid gray;">
+                                    <span style="margin-right: -20px;font-size: x-small;color: black">برای من نگه داشته شود</span></button>
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                    <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;" class="fa fa-hand-paper-o"></i></button>
+                            </div>
+                            <div class="col-2 openbtnshare" style="margin:auto; ">
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="width: 100%;border-radius: 0 35px 0 0; background-color: #ffffff; color: gray; border: 1px solid gray;">
+                                    <span style="margin-right: -20px;font-size: x-small;color: black">اشتراک گذاری</span></button>
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                    <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;" class="fa fa-share-alt"></i></button>
+                            </div>
+                            <div class="col-2 openbtnvisit" style="margin:auto; ">
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="width: 100%;border-radius: 0 35px 0 0; background-color: #ffffff; color: gray; border: 1px solid gray;">
+                                    <span style="margin-right: -20px;font-size: x-small;color: black">هماهنگی بازدید انجام شود</span></button>
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                    <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;" class="fa fa-eye"></i></button>
+                            </div>
+                            <div class="col-2 openbtnsample" style="margin:auto; ">
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="width: 100%;border-radius: 0 35px 0 0; background-color: #ffffff; color: gray; border: 1px solid gray;">
+                                    <span style="margin-right: -20px;font-size: x-small;color: black">نمونه ارسال شود</span></button>
+                                <button name="submit" type="submit" value="Submit" class="site-button "
+                                        style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                    <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;" class="fa fa-square-o"></i></button>
+                            </div>
+<!--                            <div class="col-1"></div>-->
+                        </div>
+                    </div>
+                </div>
+                <!-- Left part END -->
+            </div>
+        </div>
+    </div>
+    <!-- contact area  END -->
+{% endblock %}

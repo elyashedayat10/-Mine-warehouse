@@ -1,0 +1,50 @@
+{% extends "panel/base.html" %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="col-md-12 m-auto">
+
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h2 class="card-title text-center">فعالیت های کاربران سایت</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th scope="col">ردیف</th>
+                                    <th scope="col">عنوان فعالیت</th>
+                                    <th scope="col">کاربر</th>
+                                    <th scope="col">تاریخ</th>
+                                </tr>
+
+
+                                {% for activity in object_list %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ activity.title }}</td>
+                                        <td>{{ activity.user.email }}</td>
+                                        <td>{{ activity.created }}</td>
+                                        <td>انتخاب</td>
+                                    </tr>
+
+                                {% endfor %}
+                            </table>
+                            <input value="دانلود فایل اکسل" type="submit" class="btn-success">
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}

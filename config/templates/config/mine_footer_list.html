@@ -1,0 +1,3 @@
+{% for mine in mine_list %}
+<li><a href="{% url "mine:site_detail" mine.id %}">{{mine.name}}</a></li>
+{% endfor %}

@@ -1,0 +1,61 @@
+{% extends "panel/base.html" %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="col-md-12 m-auto">
+
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h2 class="card-title text-center">لیست کاربران vip</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table table-striped">
+                                <tr>
+                                <tr>
+                                    <th scope="col">نام شرکت</th>
+                                    <th scope="col">زمینه فعالیت</th>
+                                    <th scope="col">نام</th>
+                                    <th scope="col">نام خانوادگی</th>
+                                    <th scope="col">تلفن</th>
+                                    <th scope="col">ایمیل</th>
+                                    <th scope="col">سمت</th>
+{#                                    <th scope="col">PIN#</th>#}
+                                    <th scope="col">انتخاب</th>
+                                </tr>
+                                </tr>
+
+                                {% for user in special_user %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ user.company_name }}</td>
+                                        <td>{{ user.activity_field }}</td>
+                                        <td>{{ user.first_name }}</td>
+                                        <td>{{ user.last_name }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.position }}</td>
+{#                                        <td>{{ user. }}</td>#}
+                                        <td>انتخاب</td>
+                                    </tr>
+                                {% empty %}
+                                    <h1 class="text-center">هنوز هیچ مشتری vip ثبت نشده</h1>
+                                {% endfor %}
+                            </table>
+                        <input type="submit" value="دانلود فایل اکسل" class="btn-success">
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}

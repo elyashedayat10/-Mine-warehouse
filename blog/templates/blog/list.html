@@ -1,0 +1,164 @@
+{% extends "site/base.html" %}
+{% load static %}
+{% block search %}
+    <!-- Quik search -->
+    <div class="dez-quik-search ">
+        <form action="#" style="margin: auto;margin-top: 20px">
+            <div class="row ">
+                <div class="col-4 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="نوع سنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                </div>
+                <div class="col-4 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="نام سنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="رنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <span id="quik-search-remove"><i class="fa fa-remove"></i></span>
+                </div>
+
+            </div>
+            <div class="row " style="margin-top: -10px">
+                <div class="col-3 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="حداقل طول"
+                           type="text"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                </div>
+                <div class="col-3 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="حداکثر طول"
+                           type="text"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="حداقل ارتفاع"
+                           type="text"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="حداکثر ارتفاع"
+                           type="text"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <button class="site-button dz-xs-flex m-r5"
+                            style="background-color: #1A74B5; width: 100%">
+                        جستجو
+                    </button>
+                </div>
+
+            </div>
+            <div class="row " style="margin-top: -10px">
+                <div class="col-3 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="محل دپو"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                </div>
+                <div class="col-4 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="تناژ مورد نیاز"
+                           type="text"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                </div>
+                <div class="col-3 form-group text-left">
+                    <input name="dzName" required="" class="form-control " placeholder="درجه بندی"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <a href="{% url 'blog:blog_list' %}" class="site-button dz-xs-flex m-r5" style="background-color: #df0000;  width: 100%">Reset</a>
+                </div>
+            </div>
+            <!--                <input name="search" value="" type="text" class="form-control" placeholder="جستجو">-->
+            <!--                            <span id="quik-search-remove"><i class="fa fa-remove"></i></span>-->
+        </form>
+        <div class="dez-quik-search-opacity w-100 h-100 bg-green"
+             style="position: absolute;top: 0;z-index: -1">dafsdf
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="page-content">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static 'site/images/background/Portland-quarry-Eng-Dorset.jpg' %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">بیشتر بدانید !</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+
+        <!-- contact area -->
+        <div class="content-area">
+            <!-- Left & right section start -->
+            <div class="container">
+                <!-- Portfolio Details -->
+                <div class="clearfix portfolio-detail">
+                    <div id="masonry" class="row dez-blog-grid-2">
+                        <div class="post card-container col-lg-12 col-md-12 col-sm-12">
+                            <div class="blog-post blog-grid ">
+                                {% for block in object_list %}
+                                    <div class="dez-post-info">
+                                        <div class="dez-post-title ">
+                                            <h3 class="post-title"><a href="#">{{ block.title }}</a></h3>
+                                        </div>
+                                        <div class="dez-post-text">
+                                            <p>{{ block.description }}</p>
+                                            <div class="row m-b30">
+
+                                                {% if forloop.counter|divisibleby:2 %}
+                                                <div class="col-md-6 info-box align-self-center">
+                                                    <h5 class="text-black fw5 m-b10">{{ block.bold }}</h5>
+                                                    <p class="m-b0">{{ block.summary }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="p-a30 port-info-box bg-gray radius-sm">
+                                                        <img class="alignleft w-75" src="{{ block.image.url }}" alt="">
+                                                    </div>
+                                                </div>
+                                                {% else %}
+                                                <div class="col-md-6">
+                                                    <div class="p-a30 port-info-box bg-gray radius-sm">
+                                                        <img class="alignleft w-75" src="{{ block.image.url }}" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 info-box align-self-center">
+                                                    <h5 class="text-black fw5 m-b10">{{ block.bold }}</h5>
+                                                    <p class="m-b0">{{ block.summary }}</p>
+                                                </div>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="section-head text-center">
+                                        <div class="dez-separator-outer ">
+                                            <div class="dez-separator bg-primary style-liner"></div>
+                                        </div>
+                                    </div>
+                                {% empty %}
+                                    <h1 class="text-center">هیچ محتوایی برای نمایش وجود ندارد</h1>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Details END -->
+            </div>
+            <!-- Left & right section  END -->
+        </div>
+        <!-- contact area  END -->
+    </div>
+{% endblock %}
+ 

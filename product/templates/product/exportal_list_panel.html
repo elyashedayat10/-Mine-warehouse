@@ -1,0 +1,103 @@
+﻿{% extends "panel/base.html" %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container-full">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title">انبار بلوکهای صادراتی</h3>
+                        <div class="d-inline-block align-items-center">
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html"><i
+                                            class="mdi mdi-home-outline"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item" aria-current="page">انبار بلوک های صادراتی</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="row">
+
+
+                    <div class="col-12 col-lg-12">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">انبار بلوک های صادراتی | تعداد:{{ total }} تناژ:{{ tonajze }}</h4>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">شماره قله در سیستم</th>
+                                            <th scope="col">کد معدن</th>
+                                            <th scope="col">کد سینه کار</th>
+                                            <th scope="col">کد پله</th>
+                                            <th scope="col">نام سنگ</th>
+                                            <th scope="col">کد رنگ</th>
+                                            <th scope="col">کد درز و ترک</th>
+                                            <th scope="col">کد قواره</th>
+                                            <th scope="col">طول</th>
+                                            <th scope="col">عرض</th>
+                                            <th scope="col">ارتفاع</th>
+                                            <th scope="col">وزن تقریبی</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for product in object_list %}
+                                            <tr>
+                                                <td>{{ product.serial_number_of_the_peak_in_the_mine }}</td>
+                                                <td>{{ product.mine.id }}</td>
+                                                <td>{{ product.working_breast_code }}</td>
+                                                <td>{{ product.stair_code }}</td>
+                                                <td>{{ product.stone_name }}</td>
+                                                <td>{{ product.color_code }}</td>
+                                                <td>{{ product.grading_code }}</td>
+                                                <td>{{ product.code_Slate }}</td>
+                                                <td>{{ product.width }}</td>
+                                                <td>{{ product.length }}</td>
+                                                <td>{{ product.height }}</td>
+                                                <td>{{ product.approximate_tonnage }}</td>
+                                            </tr>
+                                        {% empty %}
+                                            <h1 class="text-center">هنوز هیچ محصولی در سیستم ثبت نشده است</h1>
+                                        {% endfor %}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+                </div>
+        </div>
+        <!-- /.row -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+
+    </div>
+    <!-- ./wrapper -->
+{% endblock %}

@@ -1,0 +1,1061 @@
+{% extends "site/base.html" %}
+{% load thumbnail %}
+{% block content %}
+
+    {% if request.user.is_authenticated or request.GET.share == '1' %}
+    <style>
+
+        /** {*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*}*/
+
+        .btn_wrap {
+            margin: 0;
+            padding: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FEFEFE;
+        }
+
+        .iclass {
+            opacity: 0;
+            font-size: 20px;
+            padding: 0 3px;
+            color: #1F1E1E;
+            will-change: transform;
+            -webkit-transform: scale(.1);
+            transform: scale(.1);
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        .btn_wrap {
+            position: relative;
+            top: -4px;
+            left: 8px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: pointer;
+            width: 125px;
+            height: 40px;
+            /*background-color: #EEEEED;*/
+            border-radius: 80px;
+            padding: 0 18px;
+            will-change: transform;
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+
+
+        }
+
+        .btn_wrap:hover {
+            /* transition-delay: .4s; */
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1)
+        }
+
+        .shareSpan {
+            position: absolute;
+            z-index: 99;
+            /*width: 240px;*/
+            height: 50px;
+            /*border-radius: 80px;*/
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+            text-align: center;
+            line-height: 45px;
+            /*letter-spacing: 2px;*/
+            color: #EEEEED;
+            /*background-color: #FFAD3E;*/
+            padding: 0 18px;
+            -webkit-transition: all 1.2s ease;
+            transition: all 1.2s ease;
+        }
+
+        .shareBox {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 240px;
+            height: 64px;
+            border-radius: 80px;
+        }
+
+        .shareBox a:nth-of-type(1) {
+            -webkit-transition-delay: 1.1s;
+            transition-delay: 1.1s;
+        }
+
+        .shareBox a:nth-of-type(2) {
+            -webkit-transition-delay: .9s;
+            transition-delay: .9s;
+        }
+
+        .shareBox a:nth-of-type(3) {
+            -webkit-transition-delay: .7s;
+            transition-delay: .7s;
+        }
+
+        .shareBox a:nth-of-type(4) {
+            -webkit-transition-delay: .4s;
+            transition-delay: .4s;
+        }
+
+        .btn_wrap:hover span {
+            -webkit-transition-delay: .25s;
+            transition-delay: .25s;
+            -webkit-transform: translateX(-280px);
+            transform: translateX(-280px)
+        }
+
+        .btn_wrap:hover a {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+
+        .dr {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            width: 100px;
+        }
+
+        /*body{*/
+        /*    margin-top: 1rem;*/
+        /*}*/
+        /*#box{*/
+        /*    height:300px;*/
+        /*    width:300px;*/
+        /*    background:#EE7554;*/
+        /*    display:block;*/
+        /*    position:relative;*/
+        /*    margin: 1rem 1rem;*/
+        /*    display:inline-block;*/
+        /*    position:relative;*/
+        /*}*/
+        #foo {
+            height: 25px;
+            width: 40px;
+            color: white;
+            overflow: hidden;
+            -webkit-transition: all .25s ease-out;
+            -moz-transition: all .25s ease-out;
+            -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+        }
+
+        #foo:hover {
+            width: 100%;
+            -webkit-transition: all .25s ease-out;
+            -moz-transition: all .25s ease-out;
+            -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+        }
+
+        #foo i.fa {
+            position: relative;
+            height: 25px;
+            width: 30px;
+            margin: 0px;
+            font-size: 20px;
+            padding: 5px 0;
+            text-align: center;
+            box-sizing: border-box;
+            opacity: 1;
+            float: left;
+        }
+
+        #foo i.fa-share-square-o {
+            opacity: 1;
+            width: 45px;
+            -webkit-transition: all .25s ease-out;
+            -moz-transition: all .25s ease-out;
+            -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+        }
+
+        #foo:hover .fa {
+            opacity: 1;
+            -webkit-transition: all .25s ease-out;
+            -moz-transition: all .25s ease-out;
+            -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+        }
+
+        #foo:hover a .fa {
+            color: white;
+        }
+
+        #foo:hover a:hover .fa {
+            color: #EE7554;
+        }
+
+        #foo:hover .fa-share-square-o {
+            opacity: 0;
+            width: 0px;
+            -webkit-transition: all .25s ease-out;
+            -moz-transition: all .25s ease-out;
+            -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+        }
+    </style>
+        <!-- Side Nav -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: rgb(255 255 255) ;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">اشترک گذاری</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="#">
+                        <input class="form-control"
+                               style="text-align: right; border-color: #e1e6eb ; background-color: #ffffff"
+                               placeholder="لینک را وارد کنید ..." type="url">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                    <button type="button" class="btn btn-primary">ارسال</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- hold -->
+    <div id="mySidenavHold" class="sidenav coming-side-bar content "><a href="javascript:void(0)"
+                                                                        class="closebtnhold bg-primary">&times;</a>
+        <div class="clearfix"></div>
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="p-a20 text-center">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="text-left"> درخواست هولد</h4>
+                    </div>
+
+                    <div class="col-4">
+                        <input name="pin" class=" bg-gray text-right"
+                               style="background-color: #ffffff5c;height: 35px; font-size: 12px;color: black;border: 1px solid #e1e6ea"
+                               type="text"
+                               placeholder="pin#">
+                    </div>
+                </div>
+                <p class="font-size-10 text-black">لطفا فرم زیر را تکمیل و ارسال فرمایید و یا شماره PIN اختصاصی خود را وارد نمایید
+                    <br>بلوک انتخابی به مدت ۴۸ ساعت به نام شما نگه داشته میشود . در صورت نیاز به زمان بیشتر با شماره
+                    ۰۹۱۹۷۴۴۹۱۹۹ تماس حاصل فرمایید.</p>
+                <div style="width: 100%; border-top: 2px solid black"></div>
+                <div class="row p-a20">
+                    <div class="col-10 text-left" style="padding-top: 25px">
+                        <label>شماره بلوک</label>
+                        <input class=" bg-gray " disabled
+                               style="background-color: #e1e6ea; width: 85%;height: 25px; font-size: 14px;color: black;border: 1px solid #e1e6ea"
+                               type="text"
+                               placeholder="#245252563637367">
+                    </div>
+                    <div class="col-2 text-right">
+                        {% if is_exportal == 1 %}
+                            {% for im in object.image_exportal_logo.all %}
+                                {% if forloop.counter == 1 %}
+                                    <img src="{{ im.photo.url }}" width="150px">
+                                {% endif %}
+                            {% endfor %}
+                        {% elif is_internal == 1 %}
+                            {% for im in object.image_internal_logo.all %}
+                                {% if forloop.counter == 1 %}
+                                    <img src="{{ im.photo.url }}" width="150px">
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-8">
+                        <p class="text-left font-weight-600">زمینه فعالیت</p>
+                        <div class="row"  style="margin-top: -17px">
+
+                            <div class="col-2 p-a0 m-a0" style="margin-top: -17px">
+                                <input type="radio" id="stone_cutting_factory1" name="field" value="stone_cutting_factory">
+                                <label for="stone_cutting_factory1" class="font-weight-400" style="font-size: 10px">کارخانه سنگ
+                                    بری</label>
+                            </div>
+                            <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="export1" type="radio" name="field" value="export">
+                                <label for="export1" class="font-weight-400" style="font-size: 10px">صادرات</label>
+                            </div>
+                            <div class="col-2 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="block_warehouse1" type="radio" name="field" value="block_warehouse">
+                                <label for="block_warehouse1" class="font-weight-400" style="font-size: 10px">انبار
+                                    بلوک</label>
+                            </div>
+                            <div class="col-2  p-a0 m-a0" style="margin-top: -17px">
+                                <input id="internal_sales_of_blocks1" type="radio" name="field" value="internal_sales_of_blocks">
+                                <label for="internal_sales_of_blocks1" class="font-weight-400" style="font-size: 10px">فروش داخلی
+                                    بلوک</label>
+                            </div>
+
+                            <div class="col-5 form-group text-left">
+                                <input style="font-size: 12px; height: 25px; background-color: #e1e6ea" name="field"
+                                       class="form-control " placeholder="سایر"
+                                       type="text"
+                                />
+                            </div>
+
+                        </div>
+                        <p class="text-left font-weight-600">نام</p>
+                        <div class="row p-t30" style="margin-top: -47px">
+                            <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                <input type="radio" id="sex1" name="male" value="true" style="margin-top: -13px">
+                                <label for="sex1" class="font-weight-400" style="font-size: 10px">آقا</label>
+                            </div>
+                            <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="sex2" type="radio" name="male" value="false" style="margin-top: -13px">
+                                <label for="sex2" class="font-weight-400" style="font-size: 10px">خانم</label>
+                            </div>
+                            <div class="col-5 form-group text-left">
+                                <input name="first_name" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                       placeholder="نام"
+                                       type="text"
+                                />
+                            </div>
+                            <div class="col-5 form-group text-left">
+                                <input name="last_name" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                       placeholder="نام خانوادگی"
+                                       type="text"
+                                />
+                            </div>
+
+                        </div>
+                        <div class="row p-t30">
+                            <div class="col-12 form-group text-left">
+                                <label>شرح درخواست</label>
+                                <textarea name="description" style="font-size: 12px; background-color: #e1e6ea"
+                                          class="form-control "
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class=" form-group text-left">
+                            <label> تعداد/ تناژ مورد نیاز مشابه</label>
+                            <input name="tonnage" style="background-color: #e1e6ea; font-size: 12px; height: 25px"  class="form-control "
+                                   placeholder="تعداد/ تناژ مورد نیاز مشابه"
+                                   type="text"
+                            />
+                        </div>
+                        <div class="form-group text-left">
+                            <label>شماره تلفن و ایمیل</label>
+                            <input name="phone" style="background-color: #e1e6ea; font-size: 12px; height: 25px"  class="form-control "
+                                   placeholder="تلفن"
+                                   type="text"
+                            />
+                        </div>
+                        <div class="form-group text-left"  style="margin-top: -20px">
+                            <input name="email" style="background-color: #e1e6ea; font-size: 12px; height: 25px"  class="form-control "
+                                   placeholder="ایمیل"
+                                   type="text"
+                            />
+                        </div>
+                        <div class=" form-group text-left">
+                            <label>آپلود فایل</label>
+                            <input name="file"  style="background-color: #e1e6ea" class="form-control "
+                                   placeholder="ایمیل"
+                                   type="file"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row p-t20">
+
+                    <div class="col-12 form-group text-left " style="margin-bottom: -10px">
+                        <button type="submit" name="submit" value="hold" class="site-button dz-xs-flex w-25 m-r5"
+                                style="background-color: #cb0000; width: 100%">
+                            ارسال
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- hold end -->
+
+    <!-- sample -->
+    <div id="mySidenavSample" class="sidenav coming-side-bar content "><a href="javascript:void(0)"
+                                                                          class="closebtnsample bg-primary">&times;</a>
+        <div class="clearfix"></div>
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="p-a20 text-center">
+                <div class="row">
+
+                    <div class="col-8">
+                        <h4 class="text-left"> درخواست نمونه</h4>
+                    </div>
+
+                    <div class="col-4">
+                        <input name="pin" class=" bg-gray text-right"
+                               style="background-color: #ffffff5c;height: 35px; font-size: 12px;color: black;border: 1px solid #e1e6ea"
+                               type="text"
+                               placeholder="pin#">
+                    </div>
+                </div>
+                <p class="font-size-10 text-black">لطفا فرم زیر را تکمیل و ارسال فرمایید و یا شماره PIN اختصاصی خود را وارد نمایید
+                    <br>اندازه نمونه استاندارد ۱۰*۱۰ سانتیمتر است جهت دریافت نمونه در ابعاد دیگر با شماره
+                    ۰۹۱۹۷۴۴۹۱۹۹ تماس حاصل فرمایید.</p>
+                <div style="width: 100%; border-top: 2px solid black"></div>
+                <div class="row p-a20">
+                    <div class="col-10 text-left" style="padding-top: 25px">
+                        <label>شماره بلوک</label>
+                        <input class=" bg-gray " disabled
+                               style="background-color: #e1e6ea; width: 85%;height: 25px; font-size: 14px;color: black;border: 1px solid #e1e6ea"
+                               type="text"
+                               placeholder="#245252563637367">
+                    </div>
+                    <div class="col-2 text-right">
+                        {% if is_exportal == 1 %}
+                            {% for im in object.image_exportal_logo.all %}
+                                {% if forloop.counter == 1 %}
+                                    <img src="{{ im.photo.url }}" width="150px">
+                                {% endif %}
+                            {% endfor %}
+                        {% elif is_internal == 1 %}
+                            {% for im in object.image_internal_logo.all %}
+                                {% if forloop.counter == 1 %}
+                                    <img src="{{ im.photo.url }}" width="150px">
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-8">
+                        <p class="text-left font-weight-600">زمینه فعالیت</p>
+                        <div class="row"  style="margin-top: -17px">
+
+                            <div class="col-2 p-a0 m-a0" style="margin-top: -17px">
+                                <input type="radio" id="stone_cutting_factory2" name="field" value="stone_cutting_factory">
+                                <label for="stone_cutting_factory2" class="font-weight-400" style="font-size: 10px">کارخانه سنگ
+                                    بری</label>
+                            </div>
+                            <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="export2" type="radio" name="field" value="export">
+                                <label for="export2" class="font-weight-400" style="font-size: 10px">صادرات</label>
+                            </div>
+                            <div class="col-2 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="block_warehouse2" type="radio" name="field" value="block_warehouse">
+                                <label for="block_warehouse2" class="font-weight-400" style="font-size: 10px">انبار
+                                    بلوک</label>
+                            </div>
+                            <div class="col-2  p-a0 m-a0" style="margin-top: -17px">
+                                <input id="internal_sales_of_blocks2" type="radio" name="field" value="internal_sales_of_blocks">
+                                <label for="internal_sales_of_blocks2" class="font-weight-400" style="font-size: 10px">فروش داخلی
+                                    بلوک</label>
+                            </div>
+
+                            <div class="col-5 form-group text-left">
+                                <input style="font-size: 12px; height: 25px; background-color: #e1e6ea" name="field"
+                                       class="form-control " placeholder="سایر"
+                                       type="text"
+                                />
+                            </div>
+
+                        </div>
+                        <p class="text-left font-weight-600">نام</p>
+                        <div class="row p-t30" style="margin-top: -47px">
+                            <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="sex3" type="radio" name="male" value="true" style="margin-top: -13px">
+                                <label for="sex3" class="font-weight-400" style="font-size: 10px">آقا</label>
+                            </div>
+                            <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="sex4" type="radio" name="male" value="false" style="margin-top: -13px">
+                                <label for="sex4" class="font-weight-400" style="font-size: 10px">خانم</label>
+                            </div>
+                            <div class="col-5 form-group text-left">
+                                <input name="first_name" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                       placeholder="نام"
+                                       type="text"
+                                />
+                            </div>
+                            <div class="col-5 form-group text-left">
+                                <input name="last_name" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                       placeholder="نام خانوادگی"
+                                       type="text"
+                                />
+                            </div>
+
+                        </div>
+                        <div class="row p-t30">
+                            <div class="col-12 form-group text-left">
+                                <label>شرح درخواست</label>
+                                <textarea name="description" style="font-size: 12px; background-color: #e1e6ea"
+                                          class="form-control "
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class=" form-group text-left">
+                            <label> تعداد/ تناژ مورد نیاز مشابه</label>
+                            <input name="tonnage" style="background-color: #e1e6ea; font-size: 12px; height: 25px"  class="form-control "
+                                   placeholder="تعداد/ تناژ مورد نیاز مشابه"
+                                   type="text"
+                            />
+                        </div>
+                        <div class="form-group text-left">
+                            <label>شماره تلفن و ایمیل</label>
+                            <input name="phone" style="background-color: #e1e6ea; font-size: 12px; height: 25px"  class="form-control "
+                                   placeholder="تلفن"
+                                   type="text"
+                            />
+                        </div>
+                        <div class="form-group text-left"  style="margin-top: -20px">
+                            <input name="email" style="background-color: #e1e6ea; font-size: 12px; height: 25px"  class="form-control "
+                                   placeholder="ایمیل"
+                                   type="text"
+                            />
+                        </div>
+                        <div class=" form-group text-left">
+                            <label>آپلود فایل</label>
+                            <input name="file"  style="background-color: #e1e6ea" class="form-control "
+                                   placeholder="ایمیل"
+                                   type="file"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row p-t20">
+
+                    <div class="col-12 form-group text-left " style="margin-bottom: -10px">
+                        <button type="submit" name="submit" value="sample" class="site-button dz-xs-flex w-25 m-r5"
+                                style="background-color: #cb0000; width: 100%">
+                            ارسال
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- sample end -->
+
+    <!-- visit -->
+    <div id="mySidenavVisit" class="sidenav coming-side-bar content "><a href="javascript:void(0)"
+                                                                         class="closebtnvisit bg-primary">&times;</a>
+        <div class="clearfix"></div>
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="p-a20 text-center">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="text-left"> درخواست ملاقات / بازدید معدن</h4>
+                    </div>
+                    <div class="col-4">
+                    </div>
+                </div>
+
+                <div class="row p-a20 p-t0">
+                    <div class="col-10 text-left" style="padding-top: 25px">
+                        <label>شماره بلوک</label>
+                        <input class=" bg-gray " disabled
+                               style="background-color: #e1e6ea; width: 85%;height: 25px; font-size: 14px;color: black;border: 1px solid #e1e6ea"
+                               type="text"
+                               placeholder="#245252563637367">
+                    </div>
+                    <div class="col-2 text-right">
+                        {% if is_exportal == 1 %}
+                            {% for im in object.image_exportal_logo.all %}
+                                {% if forloop.counter == 1 %}
+                                    <img src="{{ im.photo.url }}" width="150px">
+                                {% endif %}
+                            {% endfor %}
+                        {% elif is_internal == 1 %}
+                            {% for im in object.image_internal_logo.all %}
+                                {% if forloop.counter == 1 %}
+                                    <img src="{{ im.photo.url }}" width="150px">
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-left font-weight-600">زمینه فعالیت</p>
+                            <div class="row"  style="margin-top: -17px">
+
+                            <div class="col-2 p-a0 m-a0" style="margin-top: -17px">
+                                <input type="radio" id="stone_cutting_factory3" name="field" value="stone_cutting_factory">
+                                <label for="stone_cutting_factory3" class="font-weight-400" style="font-size: 10px">کارخانه سنگ
+                                    بری</label>
+                            </div>
+                            <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="export3" type="radio" name="field" value="export">
+                                <label for="export3" class="font-weight-400" style="font-size: 10px">صادرات</label>
+                            </div>
+                            <div class="col-2 p-a0 m-a0" style="margin-top: -17px">
+                                <input id="block_warehouse3" type="radio" name="field" value="block_warehouse">
+                                <label for="block_warehouse3" class="font-weight-400" style="font-size: 10px">انبار
+                                    بلوک</label>
+                            </div>
+                            <div class="col-2  p-a0 m-a0" style="margin-top: -17px">
+                                <input id="internal_sales_of_blocks3" type="radio" name="field" value="internal_sales_of_blocks">
+                                <label for="internal_sales_of_blocks3" class="font-weight-400" style="font-size: 10px">فروش داخلی
+                                    بلوک</label>
+                            </div>
+
+                            <div class="col-5 form-group text-left">
+                                <input style="font-size: 12px; height: 25px; background-color: #e1e6ea" name="field"
+                                       class="form-control " placeholder="سایر"
+                                       type="text"
+                                />
+                            </div>
+
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class=" form-group text-left">
+                                <label> تعداد/ تناژ مورد نیاز مشابه</label>
+                                <input name="tonnage" style="background-color: #e1e6ea; font-size: 12px; height: 25px"  class="form-control "
+                                       placeholder="تعداد/ تناژ مورد نیاز مشابه"
+                                       type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11 " >
+                            <p class="text-left font-weight-600">مشخصات تماس</p>
+                            <div class="row p-t30" style="margin-top: -47px">
+                                <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                    <input id="sex5" type="radio" name="male" value="true" style="margin-top: -13px">
+                                    <label for="sex5" class="font-weight-400" style="font-size: 10px">آقا</label>
+                                </div>
+                                <div class="col-1 p-a0 m-a0" style="margin-top: -17px">
+                                    <input id="sex6" type="radio" name="male" value="false" style="margin-top: -13px">
+                                    <label for="sex6" class="font-weight-400" style="font-size: 10px">خانم</label>
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="first_name" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="نام"
+                                           type="text"
+                                    />
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="last_name" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="نام خانوادگی"
+                                           type="text"
+                                    />
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="occupation" style="background-color: #e1e6ea;font-size: 12px; height: 25px"
+                                            class="form-control "
+                                           placeholder="سمت"
+                                           type="text"
+                                    />
+                                </div>
+
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+                                <div class="col-5 form-group text-left">
+                                    <input name="company" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="نام شرکت"
+                                           type="text"
+                                    />
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="phone" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="تلفن"
+                                           type="text"
+                                    />
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="email" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="ایمیل"
+                                           type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+                                <div class="col-11 form-group text-left">
+                                    <input name="address" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="آدرس"
+                                           type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+
+                                <div class="col-3 form-group text-left">
+                                    <p class="text-left">تاریخ و ساعت مطلوب</p>
+                                </div>
+                                <div class="col-4 form-group text-left">
+                                    <input name="visit_date" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="تاریخ"
+                                           type="text"
+                                    />
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="visit_hour" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="ساعت"
+                                           type="text"
+                                    />
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="visit_minute" style="background-color: #e1e6ea;font-size: 12px; height: 25px"  class="form-control "
+                                           placeholder="دقیقه"
+                                           type="text"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -10px">
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-12 form-group text-left">
+                                    <label>موضوع ملاقات / بازدید</label>
+                                    <textarea name="description" style="font-size: 12px; background-color: #e1e6ea"
+                                              class="form-control "
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class=" form-group text-left">
+                                <label>آپلود فایل</label>
+                                <input name="file"  style="background-color: #e1e6ea" class="form-control "
+                                       placeholder="ایمیل"
+                                       type="file"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-t5">
+
+                        <div class="col-12 form-group text-left " style="margin-bottom: -10px">
+                            <button type="submit" name="submit" value="visit" class="site-button dz-xs-flex w-25 m-r5"
+                                    style="background-color: #cb0000; width: 100%">
+                                ارسال
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <!-- visit end -->
+
+        <!-- contact area -->
+        <div class="section-full content-inner-3 bg-single contact-style-1">
+            <div class="container-fluid " style="padding-right: 10%;margin: auto">
+                <div class="row" style="height: 445px;margin: inherit;">
+                    <!-- right part start -->
+                        <!--desc-->
+                        <div class="col-lg-4 col-md-12 p-l0">
+                            <div class="bg-gray" style="width: 100%;height: 425px;margin: auto">
+                                <div style=" padding:0 6% 0 6%; height: 402px" class="col-12 bg-gray w-100 p-b0 text-center contact-area align-self-stretch">
+                                    <h2 class="m-b10 p-t20">{{ object.stone_name }}</h2>
+                                    <p>{{ object.unique_id }}</p>
+                                    <div class="row p-t20 m-r40">
+                                        <div class="col-6">
+                                            <ul class="no-margin text-left">
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>نوع سنگ</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>نام معدن</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>ابعاد</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>وزن تقریبی</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>درجه بندی</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b10">
+                                                    <p>محل دپو</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b30">
+                                                    <p>بلوک مشابه</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-6">
+                                            <ul class="no-margin text-left">
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>{{ object.mine.stone_type }}</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>{{ object.mine.name }}</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>{{ object.width }}*{{ object.length }}*{{ object.height }}</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>{{ object.approximate_tonnage }}</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>{{ object.grading_code }}</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b15">
+                                                    <p>{{ object.mine.province }}</p>
+                                                </li>
+                                                <li class="icon-bx-wraper left m-b30">
+                                                    <p>{{ object.related_count }}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--desc-->
+
+                        <!--main pic-->
+                        <div class="col-lg-7 col-md-12 p-r0">
+                            <div style="width: 96%;height: 100%;margin: auto">
+                                <ul id="masonry0" class="row dez-gallery-listing gallery-grid-4 m-lr0 mfp-gallery">
+                                    <li class="office card-container ">
+                                        <div class="dez-box ">
+                                            <div class="dez-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                                                {% if is_exportal == 1 %}
+                                                    {% for im in object.image_exportal_logo.all|slice:"0:1" %}
+                                                        <a href="javascript:void(0);">
+                                                            {% thumbnail im.photo "300x300" as img %}
+                                                            <img style="width: 100%; height: 425px" src="{{ img.url }}">
+                                                            {% endthumbnail %}
+                                                        </a>
+                                                        <div class="overlay-bx">
+                                                            <div class="overlay-icon">
+                                                                <a href="{{ im.photo.url }}" class="mfp-link" title="عنوان" title="{{ object.stone_name }}">
+                                                                    <i class="fa icon-bx-xs" style="width: 700px; height: 400px"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% elif is_internal == 1 %}
+                                                    {% for im in object.image_internal_logo.all|slice:"0:1" %}
+                                                        <a href="javascript:void(0);">
+                                                            {% thumbnail im.photo "300x300" as img %}
+                                                            <img style="width: 100%; height: 425px" src="{{ img.url }}">
+                                                            {% endthumbnail %}
+                                                        </a>
+                                                        <div class="overlay-bx">
+                                                            <div class="overlay-icon">
+                                                                <a href="{{ im.photo.url }}" class="mfp-link" title="عنوان" title="{{ object.stone_name }}">
+                                                                    <i class="fa icon-bx-xs" style="width: 700px; height: 400px"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--main pic-->
+                </div>
+                <div class="row" style="height: 120px;margin: inherit;">
+                    <!--more detail-->
+                    <div class="col-lg-4 p-l0">
+                        <div class="bg-gray" style="width: 100%;height: 100%;margin: auto">
+                            <div style="margin-bottom: 5%; padding: 5% 6% 0 6%; width: 100%;height: 100%"
+                                 class="col-12 bg-gray border text-center contact-area border-1  align-self-stretch">
+                                <div style="padding: 12px">
+                                    <div class="col-md-12">
+                                        <a href="{% url 'blog:blog_list' %}" class="site-button" style="background-color: #1A74B5"><span>اطلاعات بیشتر</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--more detail-->
+
+                    <!--pics-->
+                    <div class="col-lg-7 p-r0">
+                        <div class="row" style="width: 100%;height: 100%;margin: auto">
+                            {% if is_exportal == 1 %}
+                                {% for item in object.image_exportal.all|slice:"0:4" %}
+                                <div class="col-3">
+                                    <ul class="row dez-gallery-listing gallery-grid-4 m-lr0 mfp-gallery"
+                                        style=" margin-bottom: 0px;">
+                                        <li class="office card-container ">
+                                            <div class="dez-box ">
+                                                <div class="dez-thum dez-img-overlay1 dez-img-effect zoom-slow"><a
+                                                        href="javascript:void(0);">
+                                                    <img style="width: 100%; height: 95px" title="{{ object.stone_name }}" src="{{ item.photo.url }}"> </a>
+                                                    <div class="overlay-bx">
+                                                        <div class="overlay-icon">
+                                                            <a href="{{ item.photo.url }}" title="{{ object.stone_name }}" class="mfp-link" title="عنوان">
+                                                                <i class="fa icon-bx-xs" style="width: 700px; height: 400px"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="dez-info p-10 row" style="background-color: #1A74B5;margin: auto; text-align: center;padding: 4px">
+                                        <div class="col-lg-12">
+                                            <a href="javascript:void(0);" style="color: white">{{ object.unique_id }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% elif is_internal == 1 %}
+                                {% for item in object.image_internal.all|slice:"0:4" %}
+                                <div class="col-3">
+                                    <ul class="row dez-gallery-listing gallery-grid-4 m-lr0 mfp-gallery"
+                                        style=" margin-bottom: 0px;">
+                                        <li class="office card-container ">
+                                            <div class="dez-box ">
+                                                <div class="dez-thum dez-img-overlay1 dez-img-effect zoom-slow"><a
+                                                        href="javascript:void(0);">
+                                                    <img style="width: 100%; height: 95px" title="{{ object.stone_name }}" src="{{ item.photo.url }}"> </a>
+                                                    <div class="overlay-bx">
+                                                        <div class="overlay-icon">
+                                                            <a href="{{ item.photo.url }}" title="{{ object.stone_name }}" class="mfp-link" title="عنوان">
+                                                                <i class="fa icon-bx-xs" style="width: 700px; height: 400px"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="dez-info p-10 row" style="background-color: #1A74B5;margin: auto; text-align: center;padding: 4px">
+                                        <div class="col-lg-12">
+                                            <a href="javascript:void(0);" style="color: white">{{ object.unique_id }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!--pics-->
+                </div>
+                <div class="mt-3 col-lg-11">
+                    <div style="width: 100%;height: 100%;margin: auto;padding-left: inherit">
+                        <div class="bg-gray clearfix " style="padding:5px;">
+                            <div class="row m-auto">
+                                <!--                            <div class="col-1"></div>-->
+                                <div class="col-2 openbtnwish p-a0" style="margin:auto; ">
+                                    <a href="{% url 'account:create_favorite' object.unique_id %}" class="site-button"
+                                            style="width: 100%;border-radius: 0 35px 0 0; background-color: #ffffff; color: gray; border: 1px solid gray;">
+                                        <span style="margin-right: -20px;font-size: x-small;color: black">افزودن به لیست انتخاب های من</span>
+                                    </a>
+                                    <button name="submit" type="submit" value="Submit" class="site-button "
+                                            style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                        <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;"
+                                           class="fa fa-heart-o"></i></button>
+                                </div>
+                                <div class="col-2 openbtnhold p-a0" style="margin:auto; ">
+                                    <button name="submit" type="submit" value="Submit" class="site-button "
+                                            style="width: 100%;border-radius: 0 35px 0 0; background-color:#ffffff; color: gray; border: 1px solid gray;">
+                                        <span style="margin-right: -20px;font-size: x-small;color: black">برای من نگه داشته شود</span>
+                                    </button>
+                                    <button name="submit" type="submit" value="Submit" class="site-button "
+                                            style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                        <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;"
+                                           class="fa fa-hand-paper-o"></i></button>
+                                </div>
+
+
+
+
+
+                                <div class="col-2 openbtnshare p-a0" style="margin:auto; ">
+                                    <button name="submit" type="submit" value="Submit" class="site-button "
+                                            style="width: 100%;border-radius: 0 35px 0 0; background-color: #ffffff; color: gray; border: 1px solid gray;">
+                                         <div class="btn_wrap text-center">
+                        <span class="shareSpan text-center" style="font-size: x-small;color: black">  <a href="#"
+                                                                                                         class="site-button radius-no "
+                                                                                                         style="font-family: 'iransans';background-color: #ffffff;font-size: x-small;color: black"></i>
+                            اشتراک
+                        گذاری </a></span>
+                                            <div class="shareBox text-center">
+                                                <a target="_blank" class="iclass" href="https://t.me/share/url?url={{ full_path }}&text="><i class="fa fa-telegram"></i></a>
+                                                <a target="_blank" class="iclass" href="https://wa.me/?text={{ full_path }}"><i class="fa fa-whatsapp"></i></a>
+                                                <a target="_blank" class="iclass" href="https://www.linkedin.com/shareArticle?mini=true&url={{full_path}}"><i class="fa fa-linkedin"></i></a>
+                                                <a target="_blank" class="iclass" href="mailto:?subject=[SUBJECT]&body={{full_path}}"><i class="fa fa-envelope"></i></a>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <button name="submit" type="submit" value="Submit" class="site-button "
+                                            style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                        <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;"
+                                           class="fa fa-share-alt"></i></button>
+                                </div>
+
+
+
+
+                                <div class="col-2 openbtnvisit p-a0" style="margin:auto; ">
+                                    <button name="submit" type="submit"  href="{% url 'account:create_favorite' object.unique_id %}" value="Submit" class="site-button "
+                                            style="width: 100%;border-radius: 0 35px 0 0; background-color: #ffffff; color: gray; border: 1px solid gray;">
+                                        <span style="margin-right: -20px;font-size: x-small;color: black">هماهنگی بازدید انجام شود</span>
+                                    </button>
+                                    <button name="submit" type="submit" value="Submit" class="site-button "
+                                            style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                        <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;"
+                                           class="fa fa-eye"></i></button>
+                                </div>
+                                <div class="col-2 openbtnsample" style="margin:auto; ">
+                                    <button name="submit" type="submit" value="Submit" class="site-button "
+                                            style="width: 100%;border-radius: 0 35px 0 0; background-color: #ffffff; color: gray; border: 1px solid gray;">
+                                        <span style="margin-right: -20px;font-size: x-small;color: black">نمونه ارسال شود</span>
+                                    </button>
+                                    <button name="submit" type="submit" value="Submit" class="site-button "
+                                            style="background-color: #000000;border-radius: 50px;width: auto;position: absolute;margin-right: -30px">
+                                        <i style="color: #FFAD3E;font-size: large; margin: -4px; padding-top: inherit;"
+                                           class="fa fa-square-o"></i></button>
+                                </div>
+                                <!--                            <div class="col-1"></div>-->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- contact area END -->
+
+    {% endif %}
+
+{% endblock %}

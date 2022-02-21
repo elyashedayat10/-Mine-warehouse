@@ -1,0 +1,169 @@
+{% extends "site/base.html" %}
+{% block search %}
+                    <!-- extra nav -->
+                    <div class="extra-nav" style="height: 65px;">
+                        <div class="extra-cell ">
+                            <button id="quik-search-btn" type="button" class="site-button bg-white"
+                                    style="color: #1A74B5;font-size: large;padding-top: 5px"><i
+                                    class="fa fa-search font-weight-300"></i><a class="font-weight-300"> جستجو </a>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Quik search -->
+                    <div class="dez-quik-search "  style="top: 65px">
+                        <form action="#" style="margin: auto;margin-top: 20px">
+                            <div class="row ">
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="نوع سنگ"
+                                           type="text"
+                                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="نام سنگ"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="رنگ"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <span id="quik-search-remove"><i class="fa fa-remove"></i></span>
+                                </div>
+
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداقل طول"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداکثر طول"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداقل ارتفاع"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداکثر ارتفاع"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <button class="site-button dz-xs-flex m-r5"
+                                            style="background-color: #1A74B5; width: 100%">
+                                        جستجو
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="محل دپو"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="تناژ مورد نیاز"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="درجه بندی"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <button class="site-button dz-xs-flex m-r5"
+                                            style="background-color: #df0000;  width: 100%">
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                            <!--                <input name="search" value="" type="text" class="form-control" placeholder="جستجو">-->
+                            <!--                            <span id="quik-search-remove"><i class="fa fa-remove"></i></span>-->
+                        </form>
+                        <div class="dez-quik-search-opacity w-100 h-100 bg-green"
+                             style="position: absolute;top: 0;z-index: -1">dafsdf
+                        </div>
+                    </div>
+{% endblock %}
+
+
+
+    <!-- header END -->
+    <!-- Content -->
+{% block content %}
+    <div class="page-content">
+
+
+        <div class="content-area">
+            <div class="container">
+                <div class="clearfix">
+                    <div class="post card-container col-lg-12 col-md-12 col-sm-12">
+                        <div class="blog-post blog-grid ">
+                            <div class="dez-post-media dez-img-effect zoom-slow"><a href="{{ object.image.url }}"><img
+                                    src="{{ object.image.url }}" alt=""></a></div>
+                            <div class="dez-post-info">
+                                <div class="dez-post-title ">
+                                    <h3 class="post-title"><a href="#">{{ object.name }}</a></h3>
+                                </div>
+                                <div class="dez-post-text">
+                                    <p>{{ object.description }}</p>
+                                    <div class="row m-b30">
+                                        <div class="col-md-6">
+                                            <div class="p-a30 port-info-box bg-gray radius-sm">
+                                                <h5>کشور: <span class="m-l10 font-weight-300 text-black">ایران</span>
+                                                </h5>
+                                                <h5>استان: <span class="m-l10 font-weight-300 text-black">{{ object.province }}</span>
+                                                </h5>
+                                                <h5>شهر: <span class="m-l10 font-weight-300 text-black">{{ object.city }}</span>
+                                                </h5>
+                                                <h5>منطقه: <span class="m-l10 font-weight-300 text-black">{{ object.village }}</span>
+                                                </h5>
+                                                <h5>نوع سنگ: <span
+                                                        class="m-l10 font-weight-300 text-black">{{ object.stone_type }}</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 info-box align-self-center">
+                                            <h5 class="text-black fw5 m-b10">{{ object.bold }}
+                                              </h5>
+                                            <p class="m-b0">{{ object.sub_bold }}</p>
+                                        </div>
+                                    </div>
+                                    <p>{{ object.summary }}</p>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان
+                                        جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                                        ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می
+                                        توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به
+                                        پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته
+                                        اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <h2>موقعیت معدن</h2>
+                        <div id='map' class="col-md-12" style="height: 500px;">
+                            <!-- Map part start -->
+                              <script>
+                                            mapboxgl.accessToken = 'pk.eyJ1IjoiZWx5YXNoIiwiYSI6ImNrdXh4ZHh3dDZ3d2cydW84d3J4dHluM2YifQ.3XIGhWt29jmzJsdIdWBidw';
+                                            const map = new mapboxgl.Map({
+                                                container: 'map', // container ID
+                                                style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                                                center: [-74.5, 40], // starting position [lng, lat]
+                                                zoom: 9 // starting zoom
+                                            });
+
+                                                var marker = new mapboxgl.Marker()
+                                                    .setLngLat([{{ object.long }}, {{ object.lat }}])
+                                                    .setPopup(new mapboxgl.Popup().setHTML("<p>{{ object.address }}</p>"))
+                                                    .addTo(map);
+                                        </script>
+                            <!-- Map part END -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<li class="treeview">
+    <a href="#">
+        <i data-feather="edit-2"></i>
+        <span>معادن</span>
+        <span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+    </a>
+    <ul class="treeview-menu">
+        {% for mine in madan_list %}
+            <li><a href="{% url "mine:panel_detail" mine.id %}"><i class="ti-more"></i>{{ mine.name }}</a></li>
+        {% endfor %}
+        <li><a href="{% url "mine:create" %}"><i class="ti-more"></i>افزودن معدن</a></li>
+    </ul>
+</li>

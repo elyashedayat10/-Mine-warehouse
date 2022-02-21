@@ -1,0 +1,19 @@
+@font-face {
+	font-weight: 900;
+  font-family: 'Dana';
+  src: url('../../fonts/Dana/DanaFaNum_Bold.woff2');
+	src: url('../../fonts/Dana/DanaFaNum_Bold.eot?#iefix') format('embedded-opentype'), 
+		 url('../../fonts/Dana/DanaFaNum_Bold.woff2') format('woff2'),  
+		 url('../../fonts/Dana/DanaFaNum_Bold.woff') format('woff'), 
+		 url('../../fonts/Dana/DanaFaNum_Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-weight: 100;
+  font-family: 'Dana';
+  src: url('/fonts/Dana/DanaFaNum_Regular.eot');
+	src: url('../../fonts/Dana/DanaFaNum_Regular.eot?#iefix') format('embedded-opentype'), 
+		 url('../../fonts/Dana/DanaFaNum_Regular.woff2') format('woff2'),  
+		 url('../../fonts/Dana/DanaFaNum_Regular.woff') format('woff'), 
+		 url('../../fonts/Dana/DanaFaNum_Regular.ttf') format('truetype');
+}

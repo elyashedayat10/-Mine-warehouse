@@ -1,0 +1,551 @@
+/* 
+	Template Name: Construct : Construction, Building & Maintenance Business Template 
+	Version: 1.0
+	Author: DexignZone
+	Website: http://www.dexignzone.com/
+	Contact: dexignexpert@gmail.com
+	Follow: www.twitter.com/dexignzones
+	Like: www.facebook.com/dexignzone
+	License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+*/
+/*==========================
+	Custom css
+==========================*/
+
+.bg-img-fix {
+    background-size: cover;
+    background-position: center;
+}
+.bg-secondry {
+    background-color: #2d3239;
+}
+.logo-header img {
+    width: 220px;
+}
+/*---------------------------------------- 
+1. Comming Soon And Login Pages
+-----------------------------------------*/
+/*====== Coming Soon Page ======*/
+.countdown .date  .time {
+    font-size: 60px;
+    font-weight: 500;
+}
+.countdown .date {
+    min-width: 120px;
+    color: #fff;
+    display: inline-block;
+	border-right:1px solid rgba(255,255,255,0.2);
+	margin:0 -2px;
+}
+.countdown .date:last-child{
+	border:0px solid;
+} 
+.countdown .date .time-name {
+	font-family: 'vazir';
+    display: block;
+    margin: 0 auto;
+    padding: 2px 1px;
+    width:100%;
+	font-size: 14px;
+    font-weight: 100;
+	border-top:1px solid rgba(255,255,255,0.2);
+}
+.coming-soon-content h2 {
+	font-family: 'dana';
+	color: #ffffff;
+    font-size: 50px;
+	font-weight:100;
+	min-height:50px;
+	line-height:50px;
+}
+.coming-soon-content p {
+    max-width: 800px;
+    margin: 0px auto;
+}
+.dez-coming-soon {
+    height: 100%;
+    width: 100%;
+}
+.dez-coming-soon .container {
+    position: relative;
+	z-index:2;
+}
+.dez-coming-soon-full{
+	position: fixed;
+	overflow-y:scroll;
+}
+.dez-coming-bx {
+    margin-top: 50px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.dez-coming-bx .input-group input.form-control{ 
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0;
+	padding:0 20px;
+	background:rgba(255,255,255,0.2);
+}
+.dez-coming-bx .dez-social-icon li a{
+	background:rgba(255,255,255,0.2);
+	width:40px;
+	height:40px;
+	font-size:15px;
+	color:#fff!important;
+	padding:0;
+	line-height:38px;
+}
+.dez-coming-bx .input-group input.form-control::placeholder{
+	color:#fff;
+}
+.dez-coming-soon[class*="overlay"]:after{ 
+	position:fixed;
+}
+.dez-coming-soon .logo-header,
+.dez-login .logo-header{
+	width:100%;  
+	padding:30px!important;
+	float: none;
+}
+.sidenav.coming-side-bar {
+    background-color:#fff;
+}
+.dez-coming-bx.left-bar {
+	position:fixed;
+	top:0;
+	left:0;
+	width:50%;
+	margin-top:0;
+}
+.dez-coming-soon .container-fluid{
+	z-index:2;
+}
+/*====== Login Pages =======*/
+.dez-login {
+    bottom: 0;
+    display: table;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+.login-form {
+    max-width: 400px;
+    margin: 0px auto;
+    background: #fff;
+}
+.dez-form .form-control {
+    background: #DDE3EC;
+    height: 44px;
+	border-radius: 0;
+}
+.dez-form .form-group {
+    margin-bottom: 15px;
+}
+.login-form .bottom:hover a{ 
+	color:#fff; 
+	text-decoration:underline;
+}
+/*==== Responsive ====*/
+@media only screen and (max-width: 1200px) {
+	.dez-coming-bx.left-bar .dez-coming-bx .countdown .date{
+		min-width:75px;
+	}
+}
+@media only screen and (max-width: 991px) {
+    .dez-coming-soon.two-box,
+    .dez-coming-soon.two-box .dez-coming-bx {
+        position:relative;
+        width:100%;
+    }
+    .dez-coming-soon.two-box .dez-coming-bx {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .dez-coming-soon.two-box .dez-coming-bx h2 {
+        margin-top: 0;
+    }
+    .coming-side-bar {
+        background: #fff;
+    }
+	.skew-content-box{
+		padding: 5px;
+	}
+	.skew-content-box ul li a{
+		margin-right:3px;
+		font-size:13px;
+	}
+	.dez-social-icon{
+		margin:0;
+	}
+	.skew-content-box ul li a{
+		padding: 5px;
+	}
+	.request-a-quote:before{
+		left:0;
+		transform: skewX(0deg);
+	}
+	.header-style-4 .slide-up{
+		position:unset;
+	}
+	.dez-coming-bx.left-bar{
+		position:unset;
+		width:100%;
+	}
+	.dez-coming-bx {
+		margin-top: 30%;
+	}
+	.logo-header{
+		text-align:center;
+	}
+}
+@media only screen and (max-width: 767px) {
+    .dez-book-now-content {
+        margin-top: 10px;
+        margin-bottom: 50px;
+    }
+    .coming-soon-content h2 {
+        font-size: 30px;
+    }
+    .countdown .date .time {
+        font-size: 30px;
+    }
+    .countdown .date {
+        max-width: 50px;
+		min-width: 75px;
+		border:0;
+    }
+	.countdown .date  .time-name{
+		font-size:12px;
+		border:0;
+	}
+    .dez-coming-bx {
+        margin-top: 20px;
+    }
+	.our-service .service-box{ 
+		margin-bottom:30px; 
+	}
+	.our-service{
+		margin-top:50px; 
+	}
+	.dez-login{ 
+		padding:10px 20px 50px;
+	}
+	.dez-newsletter{ 
+		padding:15px; 
+	}
+	.dez-coming-bx,
+	.dez-coming-bx.left-bar{
+		padding-left:0;
+		padding-right:0;
+	}
+	.dez-coming-bx.left-bar{
+		padding-bottom:25px;
+	}
+	.dez-coming-soon .logo-header, 
+	.dez-login .logo-header{
+		padding:10px;
+		
+	}
+	.dez-social-icon li a{
+		line-height:33px;
+		height:35px;
+		width:35px;
+	}
+	.dez-form{
+		padding:20px;
+	}
+	.login-form.style-3 .dez-form{
+		padding:20px;
+	}
+	.login-logo {
+		text-align:center;
+		margin-bottom: 0;
+	}
+}
+/*==== Responsive END ====*/
+/*==== Particles ====*/
+.particles-js-canvas-el {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+	height:100%;
+}
+/* Form Tp Classes  */
+.dez-book-now-form.tp-light {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.dez-book-now-form.tp-light .form-control,
+.dez-book-now-form.tp-light .bootstrap-select .dropdown-toggle {
+    background-color: rgba(0, 0, 0, 0.0) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+.dez-book-now-form.tp-dark {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.dez-book-now-form.tp-dark .form-control,
+.dez-book-now-form.tp-dark .bootstrap-select .dropdown-toggle {
+    background-color: rgba(0, 0, 0, 0.0) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+/*==== Skew Section ====*/
+.skew-section{ 
+	position:relative;
+	z-index:2;
+}
+.skew-section.left-top:after,
+.skew-section.left-bottom:after,
+.skew-section.right-top:before,
+.skew-section.right-bottom:before{
+	background: inherit;
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 140px;
+    z-index:-1;
+	top:0;
+	bottom:0;
+}
+.skew-section.left-top:after{
+	left: -50px;
+    transform: skewX(7deg);
+}
+.skew-section.left-bottom:after{
+	left: -70px;
+    transform: skewX(-7deg);
+}
+.skew-section.right-top:before{
+	right: -50px;
+    transform: skewX(7deg);
+}
+.skew-section.right-bottom:before{
+	right: -50px;
+    transform: skewX(-7deg);
+}
+/*==== Skew Section END ====*/
+/*==== Bottom Footer ====*/
+.bottom-footer{
+	position:fixed;
+	bottom:0;
+	height:35px; 
+	background:rgba(0,0,0,0.2);
+	width:100%; 
+	padding:5px;
+	left:0;
+	right:0;
+	z-index:4;
+}
+/* winHeight */
+.sidenav{
+	width:1000px;
+	left:-1020px;
+}
+@media only screen and (max-width: 991px) {
+	.winHeight{ overflow:scroll; }
+	.sidenav{
+		width:100%;	
+		left:-1020px;
+	}
+}
+/* tp login */
+.tp-login-black.login-form,
+.tp-login-black .dez-form .form-control{
+	background-color:rgba(0,0,0,0.5)
+}
+.tp-login-white.login-form,
+.tp-login-white .dez-form .form-control{
+	background-color:rgba(255,255,255,0.3)
+}
+.tp-login-black .dez-form .form-control,
+.tp-login-white .dez-form .form-control{ 
+	border:0; 
+}
+.tp-login-white .dez-form .form-control::-moz-placeholder{
+	color:#fff;
+}
+.tp-login-white .dez-form .form-control{
+	color:#fff;
+}
+/* login form style 2 */
+.login-form .tab-content{
+	margin-bottom:50px;	
+}
+.login-form.style-2 .form-control{
+	background:#fff;
+}
+.login-form.style-3 .form-control{
+	border:0px solid #0079FC;
+}
+.login-form.style-3 .dez-form{
+	padding:20px;
+	border:1px solid rgba(255, 255, 255, 0.2);
+}
+.login-form.style-3{
+	background:rgba(0,0,0,0.3);
+}
+.login-form.style-3 .dez-form .form-control{
+	color:#fff;
+}
+.login-form.style-3 .dez-form .form-control::-moz-placeholder{
+	color:#fff;
+}
+.login-form #login .form-group div {
+    display: inline-block;
+}
+/* contact form */
+.contact-form .modal-dialog{
+	width:auto;
+	max-width:360px;
+}
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 0;
+}
+.modal-content .form-control, 
+.modal-content .input-group-prepend {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+}
+.modal-content .input-group:hover .form-control, 
+.modal-content .input-group:focus .form-control, 
+.modal-content .input-group:focus .input-group-prepend,
+.modal-content .input-group:hover .input-group-prepend{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0;
+}
+/* subscribe style 1 */
+.info-style-1,
+.info-style-2,
+.info-style-3,
+.info-style-4,
+.info-style-5{
+	margin-top:30px;
+}
+.info-style-1 .m-b30,
+.info-style-2 .m-b30,
+.info-style-3 .m-b30,
+.info-style-4 .m-b30,
+.info-style-5 .m-b30{
+	margin-bottom:20px;
+}
+.info-style-1 .site-button,
+.info-style-2 .site-button,
+.info-style-3 .site-button,
+.info-style-4 .site-button,
+.info-style-5 .site-button{
+	margin-bottom:0;
+}
+.info-style-1 .input-group-prepend,
+.info-style-2 .input-group-prepend,
+.info-style-4 .input-group-prepend{
+	display:none;
+}
+.info-style-1 .input-group-btn .fa,
+.info-style-5 .input-group-btn .fa{
+	display:none;
+}
+.info-style-1 .input-group input.form-control{
+	border-radius:30px !important;
+}
+.info-style-2 .input-group-btn span,
+.info-style-3 .input-group-btn span,
+.info-style-4 .input-group-btn span{
+	display:none;
+}
+.info-style-2 .input-group-btn,
+.info-style-5 .input-group-btn{
+	padding-left:0;
+}
+.info-style-2 .input-group-btn .site-button,
+.info-style-4 .input-group-btn .site-button,
+.info-style-5 .input-group-btn .site-button,
+.info-style-2 .dez-social-icon li a,
+.info-style-2 .site-button,
+.info-style-4 .dez-social-icon li a,
+.info-style-4 .site-button,
+.info-style-5 .dez-social-icon li a,
+.info-style-5 .site-button{
+	border-radius:0;
+}
+.info-style-3 .input-group-prepend{
+	background-color:rgba(255,255,255,0.2);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color:#fff;
+	border-radius:30px 0 0 30px;
+	border-right:0px;
+}
+.info-style-3 .input-group-btn{
+	padding-left:0;
+}
+.info-style-3 .input-group-btn .site-button{
+	border-radius:0 30px 30px 0;
+	padding-left:15px;
+}
+.info-style-5 .input-group-prepend{
+	background-color:rgba(255,255,255,0.2);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-right:0px;
+	border-radius:0;
+	color:#fff;
+}
+
+/* Cs Style 1 */
+.cs-style-1 .logo-header{
+	padding:0;
+}
+.cs-style-1 {
+    padding: 20px;
+}
+/* Cs Style 2 */
+.cs-style-2 .dez-coming-bx {
+	margin-top:0;
+}
+.cs-style-2 .dez-coming-bx {
+	margin-top:0;
+}
+.cs-style-2 .logo-header{
+	padding:10px;
+}
+.login-logo img{
+	max-width:250px;
+}
+@media only screen and (max-width: 360px) {
+	.dez-coming-bx.left-bar 
+	.dez-coming-bx .countdown .date{
+		min-width:70px;
+	}
+	.coming-soon-content h2{
+		line-height:30px;
+		min-height:30px;
+		margin-bottom:15px;
+	}
+	.coming-soon-content {
+		margin-bottom:15px;
+	}
+	.cs-style-1 .m-t50{
+		margin-top:30px;
+	}
+	.logo-header img{
+		width:150px;
+	}
+	.cs-style-2 .two-box{
+		padding:0 0;
+	}
+	
+}
+@media only screen and (min-device-width: 460px) and (max-device-width: 700px) and (orientation:landscape) {
+	.info-style-1 .site-button,
+	.info-style-2 .site-button,
+	.info-style-3 .site-button,
+	.info-style-4 .site-button,
+	.info-style-5 .site-button{
+		margin-bottom:0;
+	}
+}

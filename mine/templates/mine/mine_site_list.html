@@ -1,0 +1,143 @@
+{% extends "site/base.html" %}
+{% load static %}
+
+{% block search %}
+    <!-- extra nav -->
+    <div class="extra-nav" style="height: 65px;">
+        <div class="extra-cell ">
+            <button id="quik-search-btn" type="button" class="site-button bg-white"
+                    style="color: #1A74B5;font-size: large;padding-top: 5px"><i
+                    class="fa fa-search font-weight-300"></i><a class="font-weight-300"> جستجو </a>
+            </button>
+        </div>
+    </div>
+    <!-- Quik search -->
+    <div class="dez-quik-search "  style="top: 65px">
+        <form action="{% url 'product:search' %}" style="margin: auto;margin-top: 20px">
+            <div class="row ">
+                <div class="col-4 form-group text-left">
+                    <input {% if request.GET.stone_type %}value="{{request.GET.stone_type}}"{% endif %} name="stone_type" class="form-control " placeholder="نوع سنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-4 form-group text-left">
+                    <input {% if request.GET.stone_name %}value="{{request.GET.stone_name}}"{% endif %} name="stone_name" class="form-control " placeholder="نام سنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input {% if request.GET.color_code %}value="{{request.GET.color_code}}"{% endif %} name="color_code" class="form-control " placeholder="رنگ"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <button type="submit" class="site-button dz-xs-flex m-r5"
+                            style="background-color: #1A74B5; width: 100%">
+                        جستجو
+                    </button>
+                </div>
+            </div>
+            <div class="row " style="margin-top: -10px">
+                <div class="col-3 form-group text-left">
+                    <input {% if request.GET.length_min %}value="{{request.GET.length_min}}"{% endif %} name="length_min" class="form-control " placeholder="حداقل طول"
+                           type="text"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-3 form-group text-left">
+                    <input {% if request.GET.length_max %}value="{{request.GET.length_max}}"{% endif %} name="length_max" class="form-control " placeholder="حداکثر طول"
+                           type="number"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input {% if request.GET.height_min %}value="{{request.GET.height_min}}"{% endif %} name="height_min" class="form-control " placeholder="حداقل ارتفاع"
+                           type="number"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <input {% if request.GET.height_max %}value="{{request.GET.height_max}}"{% endif %} name="height_max" class="form-control " placeholder="حداکثر ارتفاع"
+                           type="number"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-2 form-group text-left">
+                    <a href="{% url 'mine:list' %}" class="site-button dz-xs-flex m-r5" style="background-color: #df0000;  width: 100%">Reset</a>
+                </div>
+            </div>
+            <div class="row " style="margin-top: -10px">
+                <div class="col-3 form-group text-left">
+                    <input {% if request.GET.mine %}value="{{request.GET.mine}}"{% endif %} name="mine" class="form-control " placeholder="محل دپو"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-4 form-group text-left">
+                    <input {% if request.GET.ton %}value="{{request.GET.ton}}"{% endif %} name="ton" class="form-control " placeholder="تناژ مورد نیاز"
+                           type="number"
+                           style="background-color: #ffffff5c;height: 35px; font-size: 12px;"/>
+                </div>
+                <div class="col-3 form-group text-left">
+                    <input {% if request.GET.grading_code %}value="{{request.GET.grading_code}}"{% endif %} name="grading_code" class="form-control " placeholder="درجه بندی"
+                           type="text"
+                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;"/>
+                </div>
+            </div>
+            <!--                <input name="search" value="" type="text" class="form-control" placeholder="جستجو">-->
+            <!--                            <span id="quik-search-remove"><i class="fa fa-remove"></i></span>-->
+        </form>
+        <div class="dez-quik-search-opacity w-100 h-100 bg-green" style="position: absolute;top: 0;z-index: -1">dafsdf
+        </div>
+
+    </div>
+{% endblock %}
+<!-- header END -->
+<!-- Content -->
+{% block content %}
+    <div class="page-content">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle"
+             style="background-image:url({% static "site/images/main-slider/slide4.jpg" %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">معادن</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+
+        <div class="content-area">
+            <div class="container">
+                <div class="clearfix">
+                    <!-- blog grid -->
+                    <div id="masonry" class="row dez-blog-grid-2">
+                        {% for mine  in object_list %}
+                            <div class="post card-container col-lg-6 col-md-6 col-sm-6">
+                                <div class="blog-post blog-grid date-style-2">
+                                    <div class="dez-post-media dez-img-effect zoom-slow"><a href="{% url "mine:site_detail" mine.id %}"><img
+                                            src="{{ mine.image.url }}" alt=""></a></div>
+                                    <div class="dez-post-info">
+                                        <div class="dez-post-title ">
+                                            <h3 class="post-title"><a href="{% url "mine:site_detail" mine.id %}">
+                                                معدن {{mine.name}}</a></h3>
+                                        </div>
+
+
+                                        <div class="dez-post-readmore"><a href="{% url "mine:site_detail" mine.id %}"
+                                                                          title="اطلاعات بیشتر"
+                                                                          rel="bookmark"
+                                                                          class="site-button-link">اطلاعات بیشتر<i
+                                                class="fa fa-angle-double-left"></i></a></div>
+                                        <div class="dez-post-tags">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <h1 class="text-center">هیچ معدنی ثبت نشده</h1>
+                        {% endfor %}
+
+                    </div>
+                    <!-- blog grid END -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

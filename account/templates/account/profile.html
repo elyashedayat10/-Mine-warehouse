@@ -1,0 +1,296 @@
+{% extends  "site/base.html" %}
+{% load static %}
+<body id="bg">
+<div id="loading-area"></div>
+<div class="page-wraper">
+    <!-- header -->
+    <header class="site-header header mo-left header-style-1">
+        <!-- top bar -->
+        <div class="top-bar no-skew bg-white">
+            <div class="container-fluid p-r60 p-l60">
+                <div class="row d-flex justify-content-between">
+                    <div class="dez-topbar-left">
+                        <ul class="social-bx list-inline  pull-left">
+                            <li style="margin-top: 0px;margin-right: 40px"><a href="javascript:void(0);"> فارسی</a></li>
+                            <li style="margin-top: -4px"><a href="profile.html" style="margin-right: 10px"
+                                                            class="fa fa-2x fa-user-circle-o"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top bar END-->
+        <!-- main header -->
+        <div class="sticky-header main-bar-wraper navbar-expand-lg">
+            <div class="main-bar clearfix ">
+                <div class="container-fluid p-l60 p-r60 clearfix">
+                    <!-- website logo -->
+                    <div class="logo-header mostion dark">
+                        <a href="index.html">
+                            <img src="images/logo4.png" width="193" height="89" alt="">
+                        </a>
+                    </div>
+                    <!-- nav toggle button -->
+                    <button class="navbar-toggler collapsed navicon justify-content-end" type="button"
+                            data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <!-- extra nav -->
+                    <div class="extra-nav">
+                        <div class="extra-cell ">
+                            <button id="quik-search-btn" type="button" class="site-button bg-white"
+                                    style="color: #1A74B5;font-size: large;padding-top: 5px"><i
+                                    class="fa fa-search font-weight-300"></i><a class="font-weight-300"> جستجو </a>
+                            </button>
+                        </div>
+                    </div>
+{% block search %}
+                    <!-- Quik search -->
+                    <div class="dez-quik-search ">
+                        <form action="#" style="margin: auto;margin-top: 20px">
+                            <div class="row ">
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="نوع سنگ"
+                                           type="text"
+                                           style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="نام سنگ"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="رنگ"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <span id="quik-search-remove"><i class="fa fa-remove"></i></span>
+                                </div>
+
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداقل طول"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداکثر طول"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداقل ارتفاع"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="حداکثر ارتفاع"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <button class="site-button dz-xs-flex m-r5"
+                                            style="background-color: #1A74B5; width: 100%">
+                                        جستجو
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="row " style="margin-top: -10px">
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="محل دپو"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-4 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="تناژ مورد نیاز"
+                                           type="text" style="background-color: #ffffff5c;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #c5c5c5;"/>
+                                </div>
+                                <div class="col-3 form-group text-left">
+                                    <input name="dzName" required="" class="form-control " placeholder="درجه بندی"
+                                           type="text" style="background-color: #ffffffc4;height: 35px; font-size: 12px;box-shadow: 1px 1px 5px 1px #e3e3e3;"/>
+                                </div>
+                                <div class="col-2 form-group text-left">
+                                    <button class="site-button dz-xs-flex m-r5"
+                                            style="background-color: #df0000;  width: 100%">
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                            <!--                <input name="search" value="" type="text" class="form-control" placeholder="جستجو">-->
+                            <!--                            <span id="quik-search-remove"><i class="fa fa-remove"></i></span>-->
+                        </form>
+                        <div class="dez-quik-search-opacity w-100 h-100 bg-green"
+                             style="position: absolute;top: 0;z-index: -1">dafsdf
+                        </div>
+                    </div>
+{% endblock %}
+            </div>
+        </div>
+</div>
+<!-- main header END -->
+</header>
+<!-- header END -->
+<!-- Content -->
+{%block content %}
+<div class="page-content  bg-white">
+    <!-- inner page banner -->
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static 'site/images/banner/bnr1.jpg' %});">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">حساب کاربری</h1>
+            </div>
+        </div>
+    </div>
+    <!-- inner page banner END -->
+
+    <!-- contact area -->
+    {% if request.usesr.is_special or request.user.is_potential %}
+    <div class="section-full content-inner-1">
+        <div class="section-full content-inner overlay-white-dark"
+             style="background-image:url({%  static 'site/images/bgprofile2.jpg' %});margin-top: -80px">
+            <div class="container">
+                <form class="p-a30 dez-form">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                            <div class="section-head text-center">
+                                <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large"> اطلاعات شخصی</p>
+                            </div>
+
+                            <div class="form-group ">
+                                <input name="dzName" required=""  value="{{ request.user.first_name }}" class="form-control m-auto w-75" placeholder="نام"
+                                       type="text"/>
+                            </div>
+                            <div class="form-group ">
+                                <input name="dzName" required=""  value="{{ request.user.first_name }}"  class="form-control m-auto w-75"
+                                       placeholder="نام خانوادگی"
+                                       type="text"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="section-head text-center">
+                                <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large"> تماس</p>
+                            </div>
+
+                            <!--                        <div class="row">-->
+                            <div class="form-group ">
+                                <input name="dzName" required=""   value="{{ request.user.phone_number }}"  class="form-control m-auto w-75" placeholder="تلفن "
+                                       type="text"/>
+                            </div>
+                            <div class="form-group ">
+                                <input name="dzName" required=""  value="{{ request.user.first_name }}"  class="form-control m-auto w-75" placeholder="موبایل"
+                                       type="text"/>
+
+                            </div>
+                            <!--                        </div>-->
+                        </div>
+                    </div>
+                    <div class="row m-t50">
+                        <div class="col-12">
+                            <div class="section-head text-center">
+                                <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large"> امنیت</p>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                                    <input name="dzName" required=""   value="{{ request.user.email }}"  class="form-control m-auto w-75" placeholder="ایمیل"
+                                           type="text"/>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                                    <input name="dzName" required=""  value="{{ request.user.email }}"    class="form-control m-auto w-75" placeholder="نام کاربری "
+                                           type="text"/>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                                    <input name="dzName" required="" class="form-control m-auto w-75" placeholder="کلمه عبور"
+                                           type="text"/>
+                                </div>
+                            </div>
+                            <div class="row m-t50">
+                                <div class="form-group col-12 text-center ">
+                                    <button class="site-button " style="padding: 15px 50px 15px 50px;">ثبت</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+
+    <div class="section-full content-inner-1">
+        <div class="section-full content-inner overlay-white-dark"
+             style="background-image:url({%  static 'site/images/bgprofile2.jpg' %});margin-top: -80px">
+            <div class="container">
+                <form class="p-a30 dez-form"    method="post">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                            <div class="section-head text-center">
+                                <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large"> اطلاعات شخصی</p>
+                            </div>
+			    
+                            <div class="form-group ">
+                                <input name="dzName" required="" class="form-control m-auto w-75" placeholder="نام"
+                                       type="text"/>
+                            </div>
+                            <div class="form-group ">
+                                <input name="dzName" required="" class="form-control m-auto w-75"
+                                       placeholder="نام خانوادگی"
+                                       type="text"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="section-head text-center">
+                                <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large"> تماس</p>
+                            </div>
+
+                            <!--                        <div class="row">-->
+                            <div class="form-group ">
+                                <input name="dzName" required="" class="form-control m-auto w-75" placeholder="تلفن "
+                                       type="text"/>
+                            </div>
+                            <div class="form-group ">
+                                <input name="dzName" required="" class="form-control m-auto w-75" placeholder="موبایل"
+                                       type="text"/>
+
+                            </div>
+                            <!--                        </div>-->
+                        </div>
+                    </div>
+                    <div class="row m-t50">
+                        <div class="col-12">
+                            <div class="section-head text-center">
+                                <p class="text-uppercase font-weight-400 text-dark" style="font-size: x-large"> امنیت</p>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                                    <input name="dzName" required="" class="form-control m-auto w-75" placeholder="ایمیل"
+                                           type="text"/>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                                    <input name="dzName" required="" class="form-control m-auto w-75" placeholder="نام کاربری "
+                                           type="text"/>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                                    <input name="dzName" required="" class="form-control m-auto w-75" placeholder="کلمه عبور"
+                                           type="text"/>
+                                </div>
+                            </div>
+                            <div class="row m-t50">
+                                <div class="form-group col-12 text-center ">
+                                    <button class="site-button " style="padding: 15px 50px 15px 50px;">ثبت</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+	{% endif %}
+<!-- contact area  END -->
+</div>
+<!-- Content END-->
+{% endblock %}

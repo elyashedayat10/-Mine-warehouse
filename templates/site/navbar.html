@@ -1,0 +1,44 @@
+<div class="header-nav navbar-collapse collapse justify-content-right" id="navbarNavDropdown">
+    <ul class=" nav navbar-nav" style="padding-right: 25px;">
+
+        <li style="padding-right: 17px" class="{% if request.resolver_match.url_name == "site_home" %}active{% endif %}">
+            <div>
+                <a href="{% url "config:site_home" %}">خانه</a>
+            </div>
+        </li>
+        <li style="padding-right: 17px"  class="{% if request.resolver_match.url_name == "all_product" %}active{% endif %}">
+            <div>
+                <a href="{% url "product:all_product" %}">کل
+                    موجودی</a>
+            </div>
+        </li>
+        <li style="padding-right: 17px" class="{% if request.resolver_match.url_name == "exportal_list" %}active{% endif %}">
+            <div>
+                <a href="{% url "product:exportal_list" %}">صادراتی</a>
+            </div>
+        </li>
+        <li style="padding-right: 17px"  class="{% if request.resolver_match.url_name == "special_offer" %}active{% endif %}">
+            <div>
+                <a href="{% url "product:special_offer" %}">پیشنهاد
+                    ویژه</a>
+            </div>
+        </li>
+        <li style="padding-right: 17px" class="{% if request.resolver_match.url_name == "list" %}active{% endif %}">
+            <div>
+                <a href="{% url "mine:list" %}">معادن</a>
+            </div>
+        </li>
+        <li style="padding-right: 17px" class="{% if request.resolver_match.url_name == "blog_list" %}active{% endif %}">
+            <div>
+                <a href="{% url "blog:blog_list" %}">بلاگ</a>
+            </div>
+        </li>
+        <li style="padding-right: 17px"  class="{% if request.resolver_match.url_name == "favorite_product" %}active{% endif %}">
+            <div>
+                <a href="{% url "account:favorite_product" %}">انتخاب های
+                    من</a>
+            </div>
+        </li>
+    </ul>
+</div>
+</div>
